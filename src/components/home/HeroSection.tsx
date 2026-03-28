@@ -3,6 +3,8 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import vid from "../../assets/bg3.mp4"
+
 
 const stats = [
 	{ value: '150+', label: 'Projects Delivered' },
@@ -23,7 +25,12 @@ const useMagnetic = (strength = 0.3) => {
 			const rect = el.getBoundingClientRect();
 			const cx = rect.left + rect.width / 2;
 			const cy = rect.top + rect.height / 2;
-			gsap.to(el, { x: (e.clientX - cx) * strength, y: (e.clientY - cy) * strength, duration: 0.4, ease: 'power2.out' });
+			gsap.to(el, {
+				x: (e.clientX - cx) * strength,
+				y: (e.clientY - cy) * strength,
+				duration: 0.4,
+				ease: 'power2.out',
+			});
 		};
 		const handleLeave = () => gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.5)' });
 		el.addEventListener('mousemove', handleMove);
@@ -105,7 +112,20 @@ const HeroSection = () => {
 	const yOffset = -(activeWord * slotHeight);
 
 	return (
-		<section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-white">
+		<section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-gray-950">
+			{/* Background video */}
+			<video
+				autoPlay
+				muted
+				loop
+				playsInline
+				className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+			>
+				<source src={vid} type="video/mp4" />
+			</video>
+			{/* Dark overlay */}
+			<div className="absolute inset-0  pointer-events-none" />
+
 			{/* Custom cursor */}
 			<motion.div
 				ref={cursorRef}
@@ -123,14 +143,14 @@ const HeroSection = () => {
 				{[...Array(6)].map((_, i) => (
 					<div
 						key={i}
-						className="h-grid-line absolute left-0 right-0 h-px bg-gray-100 origin-left"
+						className="h-grid-line absolute left-0 right-0 h-px bg-white/5 origin-left"
 						style={{ top: `${(i + 1) * (100 / 7)}%`, transform: 'scaleX(0)' }}
 					/>
 				))}
 				{[...Array(5)].map((_, i) => (
 					<div
 						key={i}
-						className="absolute top-0 bottom-0 w-px bg-gray-100"
+						className="absolute top-0 bottom-0 w-px bg-white/5"
 						style={{ left: `${(i + 1) * (100 / 6)}%` }}
 					/>
 				))}
@@ -150,10 +170,10 @@ const HeroSection = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
-						className="inline-flex items-center gap-2.5 px-4 py-2 border border-gray-200 rounded-full mb-8"
+						className="inline-flex items-center gap-2.5 px-4 py-2 border border-white/20 rounded-full mb-8"
 					>
 						<span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-						<span className="text-gray-600 text-xs font-medium tracking-[0.12em] uppercase">
+						<span className="text-white/70 text-xs font-medium tracking-[0.12em] uppercase">
 							International Technology Partner
 						</span>
 					</motion.div>
@@ -164,7 +184,7 @@ const HeroSection = () => {
 							initial={{ y: 100, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-							className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] text-gray-950 tracking-tight"
+							className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] text-white tracking-tight"
 						>
 							We Build
 						</motion.h1>
@@ -177,11 +197,7 @@ const HeroSection = () => {
 					>
 						<motion.div
 							animate={{ y: yOffset }}
-							transition={
-								skipTransition
-									? { duration: 0 }
-									: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-							}
+							transition={skipTransition ? { duration: 0 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 							className="flex flex-col"
 						>
 							{/* Real words */}
@@ -190,16 +206,14 @@ const HeroSection = () => {
 									key={word}
 									className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] tracking-tight block flex-shrink-0 h-[5.5rem] sm:h-[6.5rem] md:h-[7.5rem] lg:h-[8rem]"
 									style={{
-										color: i === activeWord ? '#F59E0B' : '#0a0a0a',
+										color: i === activeWord ? '#F59E0B' : '#ffffff',
 									}}
 								>
 									{word}
 								</span>
 							))}
 							{/* Clone of first word for seamless loop back */}
-							<span
-								className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] tracking-tight block flex-shrink-0 h-[5.5rem] sm:h-[6.5rem] md:h-[7.5rem] lg:h-[8rem] text-amber-400"
-							>
+							<span className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] tracking-tight block flex-shrink-0 h-[5.5rem] sm:h-[6.5rem] md:h-[7.5rem] lg:h-[8rem] text-amber-400">
 								{words[0]}
 							</span>
 						</motion.div>
@@ -210,7 +224,7 @@ const HeroSection = () => {
 						initial={{ opacity: 0, y: 24 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.4 }}
-						className="text-gray-500 text-base sm:text-lg max-w-xl leading-relaxed mb-10"
+						className="text-white/60 text-base sm:text-lg max-w-xl leading-relaxed mb-10"
 					>
 						ZorinTech engineers world-class digital products — from enterprise platforms to consumer apps —
 						built for performance, scale, and global reach.
@@ -234,7 +248,7 @@ const HeroSection = () => {
 						<Link
 							ref={btn2}
 							to="/work"
-							className="group inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-gray-700 font-medium rounded-full hover:border-gray-950 hover:text-gray-950 transition-all duration-300 text-sm"
+							className="group inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 text-sm"
 						>
 							View Our Work
 							<ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -246,7 +260,7 @@ const HeroSection = () => {
 						initial={{ opacity: 0, y: 24 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.7 }}
-						className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-16 pt-10 border-t border-gray-100"
+						className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-16 pt-10 border-t border-white/10"
 					>
 						{stats.map((stat, i) => (
 							<motion.div
@@ -255,10 +269,10 @@ const HeroSection = () => {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.8 + i * 0.08 }}
 							>
-								<p className="font-display text-3xl sm:text-4xl font-black text-gray-950 tabular-nums">
+								<p className="font-display text-3xl sm:text-4xl font-black text-white tabular-nums">
 									{stat.value}
 								</p>
-								<p className="text-gray-400 text-xs mt-1 tracking-wide uppercase">{stat.label}</p>
+								<p className="text-white/40 text-xs mt-1 tracking-wide uppercase">{stat.label}</p>
 							</motion.div>
 						))}
 					</motion.div>
