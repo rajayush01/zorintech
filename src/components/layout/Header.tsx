@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from "../../assets/logo-nobg.png"
 
 const navLinks = [
 	{ name: 'Home', path: '/' },
@@ -53,12 +54,7 @@ const Header = () => {
 					<div className="flex items-center justify-between h-16 sm:h-20">
 						{/* Logo */}
 						<Link to="/" className="flex items-center gap-2.5 flex-shrink-0 group">
-							<div className="w-8 h-8 bg-gray-950 rounded-lg flex items-center justify-center overflow-hidden group-hover:bg-amber-400 transition-colors duration-300">
-								<span className="text-white group-hover:text-gray-950 font-black text-sm transition-colors duration-300">Z</span>
-							</div>
-							<span className="font-display font-black text-xl text-gray-950 tracking-tight">
-								Zorin<span className="text-amber-400">Tech</span>
-							</span>
+							<img src={logo} alt="logo" className='h-20'/>
 						</Link>
 
 						{/* Desktop Nav */}
@@ -70,7 +66,7 @@ const Header = () => {
 									className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-full ${
 										location.pathname === link.path
 											? 'text-gray-950 bg-gray-100'
-											: 'text-gray-500 hover:text-gray-950 hover:bg-gray-50'
+											: 'text-gray-900 hover:text-gray-950 hover:bg-gray-50'
 									}`}
 								>
 									{link.name}

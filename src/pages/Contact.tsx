@@ -40,7 +40,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true }}
 			transition={{ delay: index * 0.08 }}
-			className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:border-amber-200 transition-colors duration-300"
+			className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:border-[#09BACF]/30 transition-colors duration-300"
 		>
 			<button
 				onClick={() => setOpen(!open)}
@@ -50,7 +50,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
 				<motion.div
 					animate={{ rotate: open ? 45 : 0 }}
 					transition={{ duration: 0.25 }}
-					className="w-8 h-8 border border-gray-200 group-hover:border-amber-400 group-hover:bg-amber-400 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
+					className="w-8 h-8 border border-gray-200 group-hover:border-[#09BACF] group-hover:bg-[#09BACF] rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
 				>
 					<ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 transition-colors duration-300" />
 				</motion.div>
@@ -94,7 +94,7 @@ const Contact = () => {
 	const inputClass = (field: string) =>
 		`${inputBase} ${
 			focused === field
-				? 'border-amber-400 shadow-[0_0_0_3px_rgba(245,158,11,0.1)]'
+				? 'border-[#09BACF] shadow-[0_0_0_3px_rgba(9,186,207,0.1)]'
 				: 'border-gray-200 hover:border-gray-300'
 		}`;
 
@@ -103,7 +103,7 @@ const Contact = () => {
 	return (
 		<>
 			{/* ── Hero ─────────────────────────────────────────────── */}
-			<section className="relative bg-gray-950 pt-32 pb-28 sm:pt-44 sm:pb-36 overflow-hidden">
+			<section className="relative bg-white pt-32 pb-28 sm:pt-44 sm:pb-36 overflow-hidden">
 				{/* Grid texture */}
 				<div
 					className="absolute inset-0 opacity-[0.035] pointer-events-none"
@@ -117,7 +117,7 @@ const Contact = () => {
 				<motion.div
 					animate={{ scale: [1, 1.25, 1], opacity: [0.08, 0.2, 0.08] }}
 					transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-					className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-amber-400 rounded-full blur-[140px] pointer-events-none"
+					className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#09BACF] rounded-full blur-[140px] pointer-events-none"
 				/>
 
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -125,7 +125,7 @@ const Contact = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
-						className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em] mb-6"
+						className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-6"
 					>
 						Get In Touch
 					</motion.p>
@@ -135,7 +135,7 @@ const Contact = () => {
 							initial={{ y: 80, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-white leading-[0.92] tracking-tight"
+							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-gray-950 leading-[0.92] tracking-tight"
 						>
 							Let's build
 						</motion.h1>
@@ -145,7 +145,7 @@ const Contact = () => {
 							initial={{ y: 80, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-amber-400 leading-[0.92] tracking-tight"
+							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-[#09BACF] leading-[0.92] tracking-tight"
 						>
 							something great.
 						</motion.h1>
@@ -155,7 +155,7 @@ const Contact = () => {
 						initial={{ opacity: 0, y: 24 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.35 }}
-						className="text-white/40 text-base sm:text-lg max-w-lg leading-relaxed mb-8"
+						className="text-gray-500 text-base sm:text-lg max-w-lg leading-relaxed mb-8"
 					>
 						Tell us about your project. We'll get back to you within 24 hours with a tailored proposal.
 					</motion.p>
@@ -164,10 +164,10 @@ const Contact = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.5 }}
-						className="inline-flex items-center gap-2.5 px-4 py-2 border border-white/10 rounded-full"
+						className="inline-flex items-center gap-2.5 px-4 py-2 border border-gray-200 rounded-full"
 					>
 						<span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-						<span className="text-white/40 text-xs font-medium">Average response time: under 4 hours</span>
+						<span className="text-gray-400 text-xs font-medium">Average response time: under 4 hours</span>
 					</motion.div>
 				</div>
 			</section>
@@ -199,7 +199,7 @@ const Contact = () => {
 											initial={{ scale: 0, rotate: -20 }}
 											animate={{ scale: 1, rotate: 0 }}
 											transition={{ type: 'spring', stiffness: 220, damping: 16, delay: 0.15 }}
-											className="w-20 h-20 bg-amber-400 rounded-full flex items-center justify-center mb-8"
+											className="w-20 h-20 bg-[#09BACF] rounded-full flex items-center justify-center mb-8"
 										>
 											<Check className="w-10 h-10 text-gray-950" />
 										</motion.div>
@@ -231,7 +231,7 @@ const Contact = () => {
 													<div
 														className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
 															i === step
-																? 'bg-amber-400 text-gray-950'
+																? 'bg-[#09BACF] text-gray-950'
 																: i < step
 																? 'text-gray-400'
 																: 'text-gray-300'
@@ -241,7 +241,7 @@ const Contact = () => {
 														{s}
 													</div>
 													{i < steps.length - 1 && (
-														<div className={`w-8 h-px mx-1 transition-colors duration-500 ${i < step ? 'bg-amber-400' : 'bg-gray-200'}`} />
+														<div className={`w-8 h-px mx-1 transition-colors duration-500 ${i < step ? 'bg-[#09BACF]' : 'bg-gray-200'}`} />
 													)}
 												</div>
 											))}
@@ -310,7 +310,7 @@ const Contact = () => {
 															whileHover={{ scale: 1.03 }}
 															whileTap={{ scale: 0.97 }}
 															onClick={() => form.name && form.email && setStep(1)}
-															className="inline-flex items-center gap-2 px-7 py-3.5 bg-gray-950 text-white font-bold rounded-full hover:bg-amber-400 hover:text-gray-950 transition-all duration-300 text-sm"
+															className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#241678] text-white font-bold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
 														>
 															Next: Project Details
 															<ArrowUpRight className="w-4 h-4" />
@@ -343,7 +343,7 @@ const Contact = () => {
 																	onClick={() => setForm({ ...form, service: s })}
 																	className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all duration-250 ${
 																		form.service === s
-																			? 'bg-gray-950 text-white border-gray-950'
+																			? 'bg-[#241678] text-white border-gray-950'
 																			: 'border-gray-200 text-gray-500 hover:border-gray-400'
 																	}`}
 																>
@@ -366,8 +366,8 @@ const Contact = () => {
 																	onClick={() => setForm({ ...form, budget: b })}
 																	className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all duration-250 ${
 																		form.budget === b
-																			? 'bg-amber-400 text-gray-950 border-amber-400'
-																			: 'border-gray-200 text-gray-500 hover:border-amber-300'
+																			? 'bg-[#09BACF] text-gray-950 border-[#09BACF]'
+																			: 'border-gray-200 text-gray-500 hover:border-[#34cee0]'
 																	}`}
 																>
 																	{b}
@@ -388,7 +388,7 @@ const Contact = () => {
 															whileHover={{ scale: 1.03 }}
 															whileTap={{ scale: 0.97 }}
 															onClick={() => setStep(2)}
-															className="inline-flex items-center gap-2 px-7 py-3.5 bg-gray-950 text-white font-bold rounded-full hover:bg-amber-400 hover:text-gray-950 transition-all duration-300 text-sm"
+															className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#241678] text-white font-bold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
 														>
 															Next: Your Message
 															<ArrowUpRight className="w-4 h-4" />
@@ -427,10 +427,10 @@ const Contact = () => {
 													{(form.service || form.budget) && (
 														<div className="flex flex-wrap gap-2">
 															{form.service && (
-																<span className="px-3 py-1 bg-gray-950 text-white text-xs font-medium rounded-full">{form.service}</span>
+																<span className="px-3 py-1 bg-[#241678] text-white text-xs font-medium rounded-full">{form.service}</span>
 															)}
 															{form.budget && (
-																<span className="px-3 py-1 bg-amber-400 text-gray-950 text-xs font-bold rounded-full">{form.budget}</span>
+																<span className="px-3 py-1 bg-[#09BACF] text-gray-950 text-xs font-bold rounded-full">{form.budget}</span>
 															)}
 														</div>
 													)}
@@ -447,7 +447,7 @@ const Contact = () => {
 															type="submit"
 															whileHover={{ scale: 1.03 }}
 															whileTap={{ scale: 0.97 }}
-															className="group inline-flex items-center gap-2 px-8 py-4 bg-gray-950 text-white font-bold rounded-full hover:bg-amber-400 hover:text-gray-950 transition-all duration-300 text-sm"
+															className="group inline-flex items-center gap-2 px-8 py-4 bg-[#241678] text-white font-bold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
 														>
 															Send Message
 															<Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -469,14 +469,14 @@ const Contact = () => {
 							className="space-y-4"
 						>
 							{/* Contact details card */}
-							<div className="bg-gray-950 rounded-2xl p-7 relative overflow-hidden">
+							<div className="bg-[#241678] rounded-2xl p-7 relative overflow-hidden">
 								<motion.div
 									animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.2, 0.08] }}
 									transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-									className="absolute top-0 right-0 w-52 h-52 bg-amber-400 rounded-full blur-[70px] pointer-events-none"
+									className="absolute top-0 right-0 w-52 h-52 bg-[#09BACF] rounded-full blur-[70px] pointer-events-none"
 								/>
 								<div className="relative z-10 space-y-5">
-									<p className="text-amber-400 text-[10px] font-bold uppercase tracking-[0.25em]">Contact Details</p>
+									<p className="text-[#09BACF] text-[10px] font-bold uppercase tracking-[0.25em]">Contact Details</p>
 									{[
 										{ icon: Mail, label: 'Email', value: 'hello@zorintech.com', href: 'mailto:hello@zorintech.com' },
 										{ icon: Phone, label: 'Phone', value: '+1 (234) 567-890', href: 'tel:+1234567890' },
@@ -485,12 +485,12 @@ const Contact = () => {
 										const Icon = item.icon;
 										return (
 											<a key={item.label} href={item.href} className="flex items-start gap-3 group">
-												<div className="w-9 h-9 bg-white/5 group-hover:bg-amber-400 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300">
+												<div className="w-9 h-9 bg-white/5 group-hover:bg-[#09BACF] rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300">
 													<Icon className="w-4 h-4 text-gray-400 group-hover:text-gray-950 transition-colors duration-300" />
 												</div>
 												<div>
 													<p className="text-gray-600 text-[10px] uppercase tracking-widest">{item.label}</p>
-													<p className="text-white text-sm font-medium group-hover:text-amber-400 transition-colors duration-300">
+													<p className="text-white text-sm font-medium group-hover:text-[#09BACF] transition-colors duration-300">
 														{item.value}
 													</p>
 												</div>
@@ -521,7 +521,7 @@ const Contact = () => {
 												<p className="text-gray-950 text-sm font-bold">{office.city}</p>
 												<p className="text-gray-400 text-xs">{office.country}</p>
 											</div>
-											<span className="px-2.5 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full border border-amber-100">
+											<span className="px-2.5 py-1 bg-[#e8f9fb] text-[#09BACF] text-[10px] font-bold rounded-full border border-[#cdf3f8]">
 												{office.tag}
 											</span>
 										</motion.div>
@@ -530,10 +530,10 @@ const Contact = () => {
 							</div>
 
 							{/* Guarantee card */}
-							<div className="bg-amber-400 rounded-2xl p-6">
+							<div className="bg-[#09BACF] rounded-2xl p-6">
 								<div className="flex items-start gap-3">
-									<div className="w-9 h-9 bg-gray-950 rounded-lg flex items-center justify-center flex-shrink-0">
-										<Check className="w-4 h-4 text-amber-400" />
+									<div className="w-9 h-9 bg-[#241678] rounded-lg flex items-center justify-center flex-shrink-0">
+										<Check className="w-4 h-4 text-[#09BACF]" />
 									</div>
 									<div>
 										<p className="font-black text-gray-950 text-sm mb-1">24-hour response guarantee</p>
@@ -557,7 +557,7 @@ const Contact = () => {
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
 								animate={faqInView ? { opacity: 1, y: 0 } : {}}
-								className="text-amber-500 text-xs font-bold uppercase tracking-[0.25em] mb-4"
+								className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
 							>
 								FAQ
 							</motion.p>
@@ -592,7 +592,7 @@ const Contact = () => {
 										key={i}
 										animate={{ scale: [1, 1.4, 1], opacity: [0.3, 1, 0.3] }}
 										transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-										className="w-1.5 h-1.5 bg-amber-400 rounded-full"
+										className="w-1.5 h-1.5 bg-[#09BACF] rounded-full"
 									/>
 								))}
 							</motion.div>

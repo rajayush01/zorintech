@@ -84,14 +84,14 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 			transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
 			onHoverStart={() => setHovered(true)}
 			onHoverEnd={() => setHovered(false)}
-			className="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-500 hover:border-amber-200 hover:shadow-2xl hover:shadow-amber-50/80"
+			className="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#9fe9f2] hover:shadow-2xl hover:shadow-[#e8f9fb]/80"
 		>
 			{/* Animated top accent bar */}
 			<motion.div
 				initial={{ scaleX: 0 }}
 				animate={inView ? { scaleX: 1 } : {}}
 				transition={{ duration: 1, delay: index * 0.1 + 0.4, ease: [0.22, 1, 0.36, 1] }}
-				className="h-[2px] bg-amber-400 origin-left"
+				className="h-[2px] bg-[#09BACF] origin-left"
 			/>
 
 			{/* Hover fill — slides up from bottom */}
@@ -99,18 +99,18 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 				initial={false}
 				animate={{ scaleY: hovered ? 1 : 0 }}
 				transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-				className="absolute inset-0 bg-gray-950 origin-bottom z-0 rounded-2xl"
+				className="absolute inset-0 bg-[#241678] origin-bottom z-0 rounded-2xl"
 			/>
 
 			<div className="relative z-10 p-7 sm:p-8">
 				{/* Header */}
 				<div className="flex items-start justify-between mb-6">
 					<motion.div
-						animate={{ backgroundColor: hovered ? 'rgba(245,158,11,0.15)' : 'rgba(245,158,11,0.08)' }}
+						animate={{ backgroundColor: hovered ? 'rgba(9,186,207,0.15)' : 'rgba(9,186,207,0.08)' }}
 						className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300"
 					>
 						<Icon
-							className={`w-5 h-5 transition-colors duration-300 ${hovered ? 'text-amber-400' : 'text-amber-500'}`}
+							className={`w-5 h-5 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-[#09BACF]'}`}
 						/>
 					</motion.div>
 					<span
@@ -122,7 +122,7 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 
 				{/* Tagline */}
 				<p
-					className={`text-[10px] font-bold uppercase tracking-[0.2em] mb-1.5 transition-colors duration-300 ${hovered ? 'text-amber-400' : 'text-amber-500'}`}
+					className={`text-[10px] font-bold uppercase tracking-[0.2em] mb-1.5 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-[#09BACF]'}`}
 				>
 					{service.tagline}
 				</p>
@@ -160,7 +160,7 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 				{/* Expand toggle */}
 				<button
 					onClick={() => setOpen(!open)}
-					className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${hovered ? 'text-amber-400' : 'text-gray-400 hover:text-amber-500'}`}
+					className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-gray-400 hover:text-[#09BACF]'}`}
 				>
 					<span>{open ? 'Hide details' : "What's included"}</span>
 					<motion.div animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.25 }}>
@@ -190,7 +190,7 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 											transition={{ delay: fi * 0.06 }}
 											className="flex items-center gap-2"
 										>
-											<div className="w-4 h-4 bg-amber-400 rounded-full flex items-center justify-center flex-shrink-0">
+											<div className="w-4 h-4 bg-[#09BACF] rounded-full flex items-center justify-center flex-shrink-0">
 												<Check className="w-2.5 h-2.5 text-gray-950" />
 											</div>
 											<span
@@ -201,7 +201,7 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 										</motion.div>
 									))}
 								</div>
-								<div className="inline-flex items-baseline gap-1.5 px-3.5 py-2 bg-amber-400 rounded-full">
+								<div className="inline-flex items-baseline gap-1.5 px-3.5 py-2 bg-[#09BACF] rounded-full">
 									<span className="text-gray-950 font-black text-sm">{service.metric}</span>
 									<span className="text-gray-950/60 text-xs">{service.metricLabel}</span>
 								</div>
@@ -249,7 +249,7 @@ const Services = () => {
 					<motion.div
 						animate={{ scale: [1, 1.25, 1], opacity: [0.18, 0.32, 0.18] }}
 						transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-						className="w-[500px] h-[500px] bg-amber-300 rounded-full blur-[130px]"
+						className="w-[500px] h-[500px] bg-[#34cee0] rounded-full blur-[130px]"
 					/>
 				</motion.div>
 
@@ -273,7 +273,7 @@ const Services = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
-						className="text-amber-500 text-xs font-bold uppercase tracking-[0.25em] mb-6"
+						className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-6"
 					>
 						What We Do
 					</motion.p>
@@ -293,7 +293,7 @@ const Services = () => {
 							initial={{ y: 80, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
-							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-amber-400 leading-[0.92] tracking-tight"
+							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-[#09BACF] leading-[0.92] tracking-tight"
 						>
 							for the world.
 						</motion.h1>
@@ -321,7 +321,7 @@ const Services = () => {
 								initial={{ opacity: 0, scale: 0.85 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ delay: 0.55 + i * 0.07 }}
-								whileHover={{ scale: 1.05, borderColor: 'rgba(245,158,11,0.6)', color: '#F59E0B' }}
+								whileHover={{ scale: 1.05, borderColor: 'rgba(245,158,11,0.6)', color: '#09BACF' }}
 								className="px-4 py-2 border border-gray-200 text-gray-400 text-xs font-medium rounded-full cursor-default transition-colors duration-300"
 							>
 								{s.title}
@@ -343,7 +343,7 @@ const Services = () => {
 			</section>
 
 			{/* ── Process Strip ─────────────────────────────────────── */}
-			<section ref={processRef} className="py-24 bg-gray-950 overflow-hidden">
+			<section ref={processRef} className="py-24 bg-[#241678] overflow-hidden">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Header */}
 					<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
@@ -351,7 +351,7 @@ const Services = () => {
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
 								animate={processInView ? { opacity: 1, y: 0 } : {}}
-								className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em] mb-4"
+								className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
 							>
 								How We Work
 							</motion.p>
@@ -368,7 +368,7 @@ const Services = () => {
 						</div>
 					</div>
 
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-800/50">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#3d2aa0]/50">
 						{[
 							{
 								step: '01',
@@ -400,14 +400,14 @@ const Services = () => {
 								initial={{ opacity: 0, y: 30 }}
 								animate={processInView ? { opacity: 1, y: 0 } : {}}
 								transition={{ duration: 0.55, delay: i * 0.12 }}
-								className="group bg-gray-950 p-8 hover:bg-gray-900 transition-colors duration-400 cursor-default"
+								className="group bg-[#241678] p-8 hover:bg-[#2e1e8a] transition-colors duration-400 cursor-default"
 							>
 								{/* Animated circle */}
 								<motion.div
 									whileHover={{ scale: 1.05 }}
-									className="w-12 h-12 border border-amber-400/25 group-hover:border-amber-400 group-hover:bg-amber-400/5 rounded-full flex items-center justify-center mb-6 transition-all duration-400"
+									className="w-12 h-12 border border-[#09BACF]/25 group-hover:border-[#09BACF] group-hover:bg-[#09BACF]/5 rounded-full flex items-center justify-center mb-6 transition-all duration-400"
 								>
-									<span className="font-black text-amber-400 text-sm">{item.step}</span>
+									<span className="font-black text-[#09BACF] text-sm">{item.step}</span>
 								</motion.div>
 
 								{/* Animated connector line (desktop) */}
@@ -416,14 +416,14 @@ const Services = () => {
 										initial={{ scaleX: 0 }}
 										animate={processInView ? { scaleX: 1 } : {}}
 										transition={{ duration: 0.8, delay: i * 0.12 + 0.5 }}
-										className="hidden lg:block absolute top-[52px] left-full w-[1px] h-px bg-amber-400/20 origin-left"
+										className="hidden lg:block absolute top-[52px] left-full w-[1px] h-px bg-[#09BACF]/20 origin-left"
 									/>
 								)}
 
 								<span className="inline-block px-2 py-0.5 bg-white/5 text-gray-600 text-[9px] uppercase tracking-widest rounded-full mb-3">
 									{item.detail}
 								</span>
-								<h3 className="font-display font-black text-xl text-white mb-2 group-hover:text-amber-400 transition-colors duration-300">
+								<h3 className="font-display font-black text-xl text-white mb-2 group-hover:text-[#09BACF] transition-colors duration-300">
 									{item.label}
 								</h3>
 								<p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-500 transition-colors duration-300">
@@ -442,13 +442,13 @@ const Services = () => {
 						initial={{ opacity: 0, y: 50 }}
 						animate={ctaInView ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-						className="relative bg-gray-950 rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
+						className="relative bg-[#241678] rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
 					>
 						{/* Pulsing amber glow */}
 						<motion.div
 							animate={{ scale: [1, 1.35, 1], opacity: [0.14, 0.28, 0.14] }}
 							transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-							className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-amber-400 rounded-full blur-[100px] pointer-events-none"
+							className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-[#09BACF] rounded-full blur-[100px] pointer-events-none"
 						/>
 						{/* Grid overlay */}
 						<div
@@ -464,10 +464,10 @@ const Services = () => {
 								initial={{ opacity: 0, scale: 0.85 }}
 								animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
 								transition={{ delay: 0.15 }}
-								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-amber-400/30 rounded-full mb-8"
+								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#09BACF]/30 rounded-full mb-8"
 							>
-								<span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-								<span className="text-amber-400 text-xs font-semibold uppercase tracking-[0.18em]">
+								<span className="w-1.5 h-1.5 bg-[#09BACF] rounded-full animate-pulse" />
+								<span className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.18em]">
 									Ready to Build?
 								</span>
 							</motion.div>
@@ -480,7 +480,7 @@ const Services = () => {
 							>
 								Not sure which service
 								<br />
-								<span className="text-amber-400">you need?</span>
+								<span className="text-[#09BACF]">you need?</span>
 							</motion.h2>
 
 							<motion.p
@@ -501,7 +501,7 @@ const Services = () => {
 							>
 								<Link
 									to="/contact"
-									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-amber-400 text-gray-950 font-bold rounded-full hover:bg-amber-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-400/25 transition-all duration-300 text-sm"
+									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:scale-105 hover:shadow-2xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
 								>
 									Get a Free Consultation
 									<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

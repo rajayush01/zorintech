@@ -14,13 +14,13 @@ const CTASection = () => {
 					initial={{ opacity: 0, y: 40 }}
 					animate={inView ? { opacity: 1, y: 0 } : {}}
 					transition={{ duration: 0.7 }}
-					className="relative bg-gray-950 rounded-2xl sm:rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
+					className="relative bg-[#241678] rounded-2xl sm:rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
 				>
-					{/* Animated amber glow */}
+					{/* Animated cyan glow */}
 					<motion.div
 						animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.3, 0.15] }}
 						transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-						className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-80 h-80 bg-amber-400 rounded-full blur-[80px] pointer-events-none"
+						className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-80 h-80 bg-[#09BACF] rounded-full blur-[80px] pointer-events-none"
 					/>
 					{/* Grid overlay */}
 					<div
@@ -36,10 +36,10 @@ const CTASection = () => {
 							initial={{ opacity: 0, scale: 0.8 }}
 							animate={inView ? { opacity: 1, scale: 1 } : {}}
 							transition={{ delay: 0.1 }}
-							className="inline-flex items-center gap-2 px-3 py-1.5 border border-amber-400/30 rounded-full mb-8"
+							className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#09BACF]/30 rounded-full mb-8"
 						>
-							<span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-							<span className="text-amber-400 text-xs font-medium uppercase tracking-[0.15em]">Ready to Build?</span>
+							<span className="w-1.5 h-1.5 bg-[#09BACF] rounded-full animate-pulse" />
+							<span className="text-[#09BACF] text-xs font-medium uppercase tracking-[0.15em]">Ready to Build?</span>
 						</motion.div>
 
 						<motion.h2
@@ -50,7 +50,7 @@ const CTASection = () => {
 						>
 							Your next big product
 							<br className="hidden sm:block" />
-							<span className="text-amber-400"> starts here.</span>
+							<span className="text-[#09BACF]"> starts here.</span>
 						</motion.h2>
 
 						<motion.p
@@ -70,7 +70,7 @@ const CTASection = () => {
 						>
 							<Link
 								to="/contact"
-								className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-amber-400 text-gray-950 font-bold rounded-full hover:bg-amber-300 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-400/30 text-sm"
+								className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#09BACF]/30 text-sm"
 							>
 								Start a Project
 								<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

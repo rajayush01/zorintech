@@ -63,7 +63,7 @@ const TestimonialsSection = () => {
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
 							animate={inView ? { opacity: 1, y: 0 } : {}}
-							className="text-amber-500 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
+							className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
 						>
 							Client Stories
 						</motion.p>
@@ -83,13 +83,13 @@ const TestimonialsSection = () => {
 					<div className="flex gap-3 flex-shrink-0">
 						<button
 							onClick={prev}
-							className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-gray-950 hover:text-gray-950 hover:bg-gray-950 hover:text-white transition-all duration-200 group"
+							className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-gray-950 hover:text-gray-950 hover:bg-[#241678] hover:text-white transition-all duration-200 group"
 						>
 							<ChevronLeft className="w-5 h-5" />
 						</button>
 						<button
 							onClick={next}
-							className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-gray-950 hover:bg-gray-950 hover:text-white transition-all duration-200"
+							className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-gray-950 hover:bg-[#241678] hover:text-white transition-all duration-200"
 						>
 							<ChevronRight className="w-5 h-5" />
 						</button>
@@ -107,7 +107,7 @@ const TestimonialsSection = () => {
 							animate={{ opacity: 1, x: 0 }}
 							exit={{ opacity: 0, x: dir * -80 }}
 							transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-							className="bg-gray-950 rounded-2xl p-8 sm:p-12 relative overflow-hidden"
+							className="bg-[#241678] rounded-2xl p-8 sm:p-12 relative overflow-hidden"
 						>
 							{/* Decorative quote mark */}
 							<div className="absolute top-6 right-8 text-[8rem] leading-none text-white/5 font-serif select-none pointer-events-none">
@@ -115,7 +115,7 @@ const TestimonialsSection = () => {
 							</div>
 
 							{/* Result badge */}
-							<div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-400 rounded-full mb-8">
+							<div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#09BACF] rounded-full mb-8">
 								<span className="text-gray-950 font-black text-sm">{t.result}</span>
 							</div>
 
@@ -124,7 +124,7 @@ const TestimonialsSection = () => {
 							</p>
 
 							<div className="flex items-center gap-4">
-								<div className="w-11 h-11 bg-amber-400 rounded-full flex items-center justify-center text-gray-950 font-black text-lg flex-shrink-0">
+								<div className="w-11 h-11 bg-[#09BACF] rounded-full flex items-center justify-center text-gray-950 font-black text-lg flex-shrink-0">
 									{t.name[0]}
 								</div>
 								<div>
@@ -146,12 +146,12 @@ const TestimonialsSection = () => {
 								onClick={() => { setDir(i > current ? 1 : -1); setCurrent(i); }}
 								className={`text-left p-4 rounded-xl border transition-all duration-300 ${
 									i === current
-										? 'border-amber-300 bg-amber-50'
+										? 'border-[#34cee0] bg-[#e8f9fb]'
 										: 'border-gray-100 hover:border-gray-200 bg-white'
 								}`}
 							>
 								<div className="flex items-center gap-3">
-									<div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0 ${i === current ? 'bg-amber-400 text-gray-950' : 'bg-gray-100 text-gray-400'}`}>
+									<div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0 ${i === current ? 'bg-[#09BACF] text-gray-950' : 'bg-gray-100 text-gray-400'}`}>
 										{item.name[0]}
 									</div>
 									<div className="min-w-0">
@@ -159,7 +159,7 @@ const TestimonialsSection = () => {
 										<p className="text-gray-400 text-[10px] truncate">{item.company}</p>
 									</div>
 									{i === current && (
-										<span className="ml-auto text-amber-500 text-[10px] font-bold uppercase tracking-widest flex-shrink-0">Active</span>
+										<span className="ml-auto text-[#09BACF] text-[10px] font-bold uppercase tracking-widest flex-shrink-0">Active</span>
 									)}
 								</div>
 							</motion.button>
@@ -173,7 +173,7 @@ const TestimonialsSection = () => {
 						<button
 							key={i}
 							onClick={() => { setDir(i > current ? 1 : -1); setCurrent(i); }}
-							className={`h-1 rounded-full transition-all duration-400 ${i === current ? 'w-8 bg-amber-400' : 'w-3 bg-gray-200 hover:bg-gray-300'}`}
+							className={`h-1 rounded-full transition-all duration-400 ${i === current ? 'w-8 bg-[#09BACF]' : 'w-3 bg-gray-200 hover:bg-gray-300'}`}
 						/>
 					))}
 				</div>

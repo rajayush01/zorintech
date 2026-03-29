@@ -55,12 +55,12 @@ const About = () => {
 	return (
 		<>
 			{/* ── Hero ─────────────────────────────────────────────── */}
-			<section ref={heroRef} className="relative bg-gray-950 pt-32 pb-28 sm:pt-44 sm:pb-36 overflow-hidden">
+			<section ref={heroRef} className="relative bg-white pt-32 pb-28 sm:pt-44 sm:pb-36 overflow-hidden">
 				{/* Grid */}
 				<div
 					className="absolute inset-0 opacity-[0.035] pointer-events-none"
 					style={{
-						backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
+						backgroundImage: `linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px)`,
 						backgroundSize: '56px 56px',
 					}}
 				/>
@@ -70,7 +70,7 @@ const About = () => {
 					<motion.div
 						animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.2, 0.08] }}
 						transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-						className="w-[600px] h-[600px] bg-amber-400 rounded-full blur-[150px]"
+						className="w-[600px] h-[600px] bg-[#09BACF] rounded-full blur-[150px]"
 					/>
 				</motion.div>
 
@@ -79,7 +79,7 @@ const About = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
-						className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em] mb-6"
+						className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-6"
 					>
 						About Us
 					</motion.p>
@@ -89,7 +89,7 @@ const About = () => {
 							initial={{ y: 80, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-white leading-[0.92] tracking-tight"
+							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-gray-950 leading-[0.92] tracking-tight"
 						>
 							We are the team
 						</motion.h1>
@@ -99,7 +99,7 @@ const About = () => {
 							initial={{ y: 80, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-amber-400 leading-[0.92] tracking-tight"
+							className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-[#09BACF] leading-[0.92] tracking-tight"
 						>
 							behind the build.
 						</motion.h1>
@@ -109,7 +109,7 @@ const About = () => {
 						initial={{ opacity: 0, y: 24 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.35 }}
-						className="text-white/40 text-base sm:text-lg max-w-lg leading-relaxed mb-14"
+						className="text-gray-400 text-base sm:text-lg max-w-lg leading-relaxed mb-14"
 					>
 						ZorinTech is an international technology partner building world-class digital products for ambitious businesses across every industry.
 					</motion.p>
@@ -119,7 +119,7 @@ const About = () => {
 						initial={{ opacity: 0, y: 24 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.5 }}
-						className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-white/[0.07]"
+						className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-gray-100"
 					>
 						{[
 							{ v: '8+', l: 'Years' },
@@ -133,8 +133,8 @@ const About = () => {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.6 + i * 0.08 }}
 							>
-								<p className="font-display text-3xl sm:text-4xl font-black text-white tabular-nums">{s.v}</p>
-								<p className="text-white/30 text-xs mt-1 tracking-[0.15em] uppercase">{s.l}</p>
+								<p className="font-display text-3xl sm:text-4xl font-black text-gray-950 tabular-nums">{s.v}</p>
+								<p className="text-gray-400 text-xs mt-1 tracking-[0.15em] uppercase">{s.l}</p>
 							</motion.div>
 						))}
 					</motion.div>
@@ -150,7 +150,7 @@ const About = () => {
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
 								animate={missionInView ? { opacity: 1, y: 0 } : {}}
-								className="text-amber-500 text-xs font-bold uppercase tracking-[0.25em] mb-4"
+								className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
 							>
 								Our Mission
 							</motion.p>
@@ -202,10 +202,10 @@ const About = () => {
 								<motion.div
 									animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.22, 0.08] }}
 									transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-									className="absolute top-0 right-0 w-64 h-64 bg-amber-400 rounded-full blur-[90px] pointer-events-none"
+									className="absolute top-0 right-0 w-64 h-64 bg-[#09BACF] rounded-full blur-[90px] pointer-events-none"
 								/>
 								<div className="relative z-10">
-									<p className="text-amber-400 text-[10px] font-bold uppercase tracking-[0.25em] mb-7">Global Reach</p>
+									<p className="text-[#09BACF] text-[10px] font-bold uppercase tracking-[0.25em] mb-7">Global Reach</p>
 									<div className="space-y-5">
 										{regions.map((r, i) => (
 											<motion.div
@@ -215,15 +215,15 @@ const About = () => {
 												transition={{ delay: 0.4 + i * 0.08 }}
 											>
 												<div className="flex justify-between mb-2">
-													<span className="text-white/60 text-xs">{r.region}</span>
-													<span className="text-amber-400 text-xs font-black">{r.projects}</span>
+													<span className="text-white/80 text-xs">{r.region}</span>
+													<span className="text-[#09BACF] text-xs font-black">{r.projects}</span>
 												</div>
 												<div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
 													<motion.div
 														initial={{ width: 0 }}
 														animate={missionInView ? { width: r.pct } : {}}
 														transition={{ duration: 1.1, delay: 0.5 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-														className="h-full bg-amber-400 rounded-full"
+														className="h-full bg-[#09BACF] rounded-full"
 													/>
 												</div>
 											</motion.div>
@@ -244,7 +244,7 @@ const About = () => {
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
 								animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-								className="text-amber-500 text-xs font-bold uppercase tracking-[0.25em] mb-4"
+								className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
 							>
 								What We Stand For
 							</motion.p>
@@ -280,9 +280,9 @@ const About = () => {
 									initial={{ opacity: 0, y: 40 }}
 									animate={valuesInView ? { opacity: 1, y: 0 } : {}}
 									transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-									className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-amber-200 hover:shadow-xl hover:shadow-amber-50/80 transition-all duration-400 cursor-default"
+									className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#9fe9f2] hover:shadow-xl hover:shadow-[#e8f9fb]/80 transition-all duration-400 cursor-default"
 								>
-									<div className="w-11 h-11 bg-gray-50 group-hover:bg-amber-400 rounded-xl flex items-center justify-center text-gray-400 group-hover:text-gray-950 mb-5 transition-all duration-300">
+									<div className="w-11 h-11 bg-gray-50 group-hover:bg-[#09BACF] rounded-xl flex items-center justify-center text-gray-400 group-hover:text-gray-950 mb-5 transition-all duration-300">
 										<Icon className="w-5 h-5" />
 									</div>
 									<h4 className="font-black text-gray-950 mb-2 text-sm">{v.title}</h4>
@@ -293,7 +293,7 @@ const About = () => {
 										initial={{ scaleX: 0 }}
 										whileHover={{ scaleX: 1 }}
 										transition={{ duration: 0.3 }}
-										className="h-px bg-amber-400 mt-5 origin-left"
+										className="h-px bg-[#09BACF] mt-5 origin-left"
 									/>
 								</motion.div>
 							);
@@ -303,12 +303,12 @@ const About = () => {
 			</section>
 
 			{/* ── Timeline ──────────────────────────────────────────── */}
-			<section ref={timelineRef} className="py-24 sm:py-32 bg-gray-950 overflow-hidden">
+			<section ref={timelineRef} className="py-24 sm:py-32 bg-[#f8f9ff] overflow-hidden">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
 						animate={timelineInView ? { opacity: 1, y: 0 } : {}}
-						className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em] mb-4"
+						className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
 					>
 						Our Journey
 					</motion.p>
@@ -319,9 +319,9 @@ const About = () => {
 							transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
 							className="font-display text-5xl sm:text-6xl font-black leading-[0.95] tracking-tight"
 						>
-							<span className="text-white">8 years of</span>
+							<span className="text-gray-950">8 years of</span>
 							<br />
-							<span className="text-gray-700">building great things.</span>
+							<span className="text-gray-300">building great things.</span>
 						</motion.h2>
 					</div>
 
@@ -332,7 +332,7 @@ const About = () => {
 								initial={{ scaleY: 0 }}
 								animate={timelineInView ? { scaleY: 1 } : {}}
 								transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-								className="w-full h-full bg-gradient-to-b from-amber-400 via-amber-400/40 to-transparent origin-top"
+								className="w-full h-full bg-gradient-to-b from-[#09BACF] via-[#624CB2]/40 to-transparent origin-top"
 							/>
 						</div>
 
@@ -352,12 +352,12 @@ const About = () => {
 										<motion.div
 											whileHover={{ scale: 1.02 }}
 											transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-											className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-amber-400/30 transition-colors duration-400 cursor-default"
+											className="bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#09BACF]/30 transition-colors duration-400 cursor-default shadow-sm"
 										>
-											<span className="font-display font-black text-3xl text-amber-400 block mb-2 tabular-nums">
+											<span className="font-display font-black text-3xl text-[#09BACF] block mb-2 tabular-nums">
 												{m.year}
 											</span>
-											<p className="text-gray-400 text-sm leading-relaxed">{m.event}</p>
+											<p className="text-gray-500 text-sm leading-relaxed">{m.event}</p>
 										</motion.div>
 									</div>
 
@@ -366,7 +366,7 @@ const About = () => {
 										initial={{ scale: 0 }}
 										animate={timelineInView ? { scale: 1 } : {}}
 										transition={{ type: 'spring', stiffness: 260, damping: 18, delay: i * 0.12 + 0.5 }}
-										className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-amber-400 rounded-full border-4 border-gray-950 z-10"
+										className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-[#09BACF] rounded-full border-4 border-white z-10"
 									/>
 								</motion.div>
 							))}
@@ -383,7 +383,7 @@ const About = () => {
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
 								animate={teamInView ? { opacity: 1, y: 0 } : {}}
-								className="text-amber-500 text-xs font-bold uppercase tracking-[0.25em] mb-4"
+								className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
 							>
 								The Team
 							</motion.p>
@@ -417,21 +417,21 @@ const About = () => {
 								initial={{ opacity: 0, y: 40 }}
 								animate={teamInView ? { opacity: 1, y: 0 } : {}}
 								transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-								className="group bg-white border border-gray-100 rounded-2xl p-6 hover:border-amber-200 hover:shadow-xl hover:shadow-amber-50/80 transition-all duration-400 cursor-default overflow-hidden relative"
+								className="group bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#9fe9f2] hover:shadow-xl hover:shadow-[#e8f9fb]/80 transition-all duration-400 cursor-default overflow-hidden relative"
 							>
 								{/* Hover accent line */}
 								<motion.div
 									initial={{ scaleX: 0 }}
 									whileHover={{ scaleX: 1 }}
 									transition={{ duration: 0.4 }}
-									className="absolute top-0 left-0 right-0 h-[2px] bg-amber-400 origin-left"
+									className="absolute top-0 left-0 right-0 h-[2px] bg-[#09BACF] origin-left"
 								/>
 
 								<div className="flex items-center gap-4 mb-5">
 									<motion.div
 										whileHover={{ rotate: [0, -6, 6, 0] }}
 										transition={{ duration: 0.4 }}
-										className="w-14 h-14 bg-gray-950 group-hover:bg-amber-400 rounded-xl flex items-center justify-center text-white group-hover:text-gray-950 font-black text-xl transition-all duration-300 flex-shrink-0"
+										className="w-14 h-14 bg-gray-950 group-hover:bg-[#09BACF] rounded-xl flex items-center justify-center text-white group-hover:text-white font-black text-xl transition-all duration-300 flex-shrink-0"
 									>
 										{member.initial}
 									</motion.div>
@@ -443,7 +443,7 @@ const About = () => {
 
 								<div className="flex items-center justify-between">
 									<span className="text-[10px] text-gray-400 uppercase tracking-widest">{member.country}</span>
-									<span className="px-2.5 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full border border-amber-100">
+									<span className="px-2.5 py-1 bg-[#e8f9fb] text-[#0a9db0] text-[10px] font-bold rounded-full border border-[#cdf3f8]">
 										{member.specialty}
 									</span>
 								</div>
@@ -460,12 +460,12 @@ const About = () => {
 						initial={{ opacity: 0, y: 50 }}
 						animate={ctaInView ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-						className="relative bg-gray-950 rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
+						className="relative bg-[#241678] rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
 					>
 						<motion.div
 							animate={{ scale: [1, 1.35, 1], opacity: [0.14, 0.28, 0.14] }}
 							transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-							className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-amber-400 rounded-full blur-[100px] pointer-events-none"
+							className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-[#09BACF] rounded-full blur-[100px] pointer-events-none"
 						/>
 						<div
 							className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -480,10 +480,10 @@ const About = () => {
 								initial={{ opacity: 0, scale: 0.85 }}
 								animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
 								transition={{ delay: 0.15 }}
-								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-amber-400/30 rounded-full mb-8"
+								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#09BACF]/30 rounded-full mb-8"
 							>
-								<span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-								<span className="text-amber-400 text-xs font-semibold uppercase tracking-[0.18em]">Join Our Journey</span>
+								<span className="w-1.5 h-1.5 bg-[#09BACF] rounded-full animate-pulse" />
+								<span className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.18em]">Join Our Journey</span>
 							</motion.div>
 
 							<motion.h2
@@ -494,7 +494,7 @@ const About = () => {
 							>
 								Let's build something
 								<br />
-								<span className="text-amber-400">remarkable together.</span>
+								<span className="text-[#09BACF]">remarkable together.</span>
 							</motion.h2>
 
 							<motion.div
@@ -505,7 +505,7 @@ const About = () => {
 							>
 								<Link
 									to="/contact"
-									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-amber-400 text-gray-950 font-bold rounded-full hover:bg-amber-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-400/25 transition-all duration-300 text-sm"
+									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-white font-bold rounded-full hover:bg-[#34cee0] hover:scale-105 hover:shadow-2xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
 								>
 									Start a Project
 									<ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

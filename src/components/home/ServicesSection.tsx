@@ -70,23 +70,23 @@ const ServiceCard = ({ service, index, inView }: { service: typeof services[0]; 
 			transition={{ duration: 0.55, delay: index * 0.08 }}
 			onHoverStart={() => setHovered(true)}
 			onHoverEnd={() => setHovered(false)}
-			className="relative group bg-white border border-gray-100 rounded-2xl p-7 sm:p-8 overflow-hidden cursor-pointer transition-shadow duration-500 hover:shadow-2xl hover:shadow-amber-100/60 hover:border-amber-200"
+			className="relative group bg-white border border-gray-100 rounded-2xl p-7 sm:p-8 overflow-hidden cursor-pointer transition-shadow duration-500 hover:shadow-2xl hover:shadow-[#e8f9fb]/60 hover:border-[#9fe9f2]"
 		>
 			{/* Animated background fill */}
 			<motion.div
 				initial={{ scaleY: 0 }}
 				animate={{ scaleY: hovered ? 1 : 0 }}
 				transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-				className="absolute inset-0 bg-gray-950 origin-bottom rounded-2xl z-0"
+				className="absolute inset-0 bg-[#241678] origin-bottom rounded-2xl z-0"
 			/>
 
 			<div className="relative z-10">
 				<div className="flex items-start justify-between mb-7">
 					<motion.div
-						animate={{ backgroundColor: hovered ? 'rgba(245,158,11,0.15)' : 'rgba(245,158,11,0.08)' }}
+						animate={{ backgroundColor: hovered ? 'rgba(9,186,207,0.15)' : 'rgba(9,186,207,0.08)' }}
 						className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
 					>
-						<Icon className={`w-5 h-5 transition-colors duration-300 ${hovered ? 'text-amber-400' : 'text-amber-500'}`} />
+						<Icon className={`w-5 h-5 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-[#09BACF]'}`} />
 					</motion.div>
 					<span className={`font-black text-5xl leading-none transition-colors duration-300 ${hovered ? 'text-white/10' : 'text-gray-50'}`}>
 						{service.number}
@@ -101,7 +101,7 @@ const ServiceCard = ({ service, index, inView }: { service: typeof services[0]; 
 							animate={{ opacity: 1, y: 0, scale: 1 }}
 							exit={{ opacity: 0, y: -8, scale: 0.9 }}
 							transition={{ duration: 0.25 }}
-							className="inline-flex items-baseline gap-1.5 px-3 py-1 bg-amber-400 rounded-full mb-4"
+							className="inline-flex items-baseline gap-1.5 px-3 py-1 bg-[#09BACF] rounded-full mb-4"
 						>
 							<span className="text-gray-950 font-black text-sm">{service.metric}</span>
 							<span className="text-gray-950/60 text-xs">{service.metricLabel}</span>
@@ -131,7 +131,7 @@ const ServiceCard = ({ service, index, inView }: { service: typeof services[0]; 
 					))}
 				</div>
 
-				<div className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${hovered ? 'text-amber-400' : 'text-gray-400'}`}>
+				<div className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-gray-400'}`}>
 					Learn more
 					<ArrowUpRight className={`w-4 h-4 transition-transform duration-300 ${hovered ? 'translate-x-0.5 -translate-y-0.5' : ''}`} />
 				</div>
@@ -153,7 +153,7 @@ const ServicesSection = () => {
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
 							animate={inView ? { opacity: 1, y: 0 } : {}}
-							className="text-amber-500 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
+							className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
 						>
 							What We Do
 						</motion.p>

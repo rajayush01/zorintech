@@ -112,7 +112,7 @@ const HeroSection = () => {
 	const yOffset = -(activeWord * slotHeight);
 
 	return (
-		<section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-gray-950">
+		<section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#241678]">
 			{/* Background video */}
 			<video
 				autoPlay
@@ -129,12 +129,12 @@ const HeroSection = () => {
 			{/* Custom cursor */}
 			<motion.div
 				ref={cursorRef}
-				className="fixed w-8 h-8 rounded-full border border-amber-400 pointer-events-none z-[9999] hidden lg:block"
+				className="fixed w-8 h-8 rounded-full border border-[#09BACF] pointer-events-none z-[9999] hidden lg:block"
 				style={{ x: springX, y: springY, top: 0, left: 0 }}
 			/>
 			<div
 				ref={cursorDotRef}
-				className="fixed w-2 h-2 bg-amber-400 rounded-full pointer-events-none z-[9999] hidden lg:block"
+				className="fixed w-2 h-2 bg-[#09BACF] rounded-full pointer-events-none z-[9999] hidden lg:block"
 				style={{ top: 0, left: 0 }}
 			/>
 
@@ -160,7 +160,7 @@ const HeroSection = () => {
 			<motion.div
 				animate={{ scale: [1, 1.2, 1], opacity: [0.12, 0.2, 0.12] }}
 				transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-				className="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-400 rounded-full blur-[100px] pointer-events-none"
+				className="absolute top-1/3 right-1/4 w-80 h-80 bg-[#624CB2] rounded-full blur-[100px] pointer-events-none"
 			/>
 
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 sm:pb-20 relative z-10 w-full">
@@ -172,7 +172,7 @@ const HeroSection = () => {
 						transition={{ duration: 0.6 }}
 						className="inline-flex items-center gap-2.5 px-4 py-2 border border-white/20 rounded-full mb-8"
 					>
-						<span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
+						<span className="w-1.5 h-1.5 bg-[#09BACF] rounded-full animate-pulse" />
 						<span className="text-white/70 text-xs font-medium tracking-[0.12em] uppercase">
 							International Technology Partner
 						</span>
@@ -206,14 +206,14 @@ const HeroSection = () => {
 									key={word}
 									className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] tracking-tight block flex-shrink-0 h-[5.5rem] sm:h-[6.5rem] md:h-[7.5rem] lg:h-[8rem]"
 									style={{
-										color: i === activeWord ? '#F59E0B' : '#ffffff',
+										color: i === activeWord ? '#09BACF' : '#ffffff',
 									}}
 								>
 									{word}
 								</span>
 							))}
 							{/* Clone of first word for seamless loop back */}
-							<span className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] tracking-tight block flex-shrink-0 h-[5.5rem] sm:h-[6.5rem] md:h-[7.5rem] lg:h-[8rem] text-amber-400">
+							<span className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-[0.95] tracking-tight block flex-shrink-0 h-[5.5rem] sm:h-[6.5rem] md:h-[7.5rem] lg:h-[8rem] text-[#09BACF]">
 								{words[0]}
 							</span>
 						</motion.div>
@@ -240,7 +240,7 @@ const HeroSection = () => {
 						<Link
 							ref={btn1}
 							to="/contact"
-							className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-950 text-white font-semibold rounded-full hover:bg-amber-400 hover:text-gray-950 transition-all duration-300 text-sm tracking-wide"
+							className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#241678] text-white font-semibold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm tracking-wide"
 						>
 							Start a Project
 							<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -290,7 +290,7 @@ const HeroSection = () => {
 					<motion.div
 						animate={{ y: ['-100%', '100%'] }}
 						transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-						className="w-full h-1/2 bg-amber-400"
+						className="w-full h-1/2 bg-[#09BACF]"
 					/>
 				</motion.div>
 				<span className="text-[10px] text-gray-300 uppercase tracking-[0.2em]">Scroll</span>

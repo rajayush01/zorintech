@@ -43,7 +43,7 @@ const WhyUsSection = () => {
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
 							animate={inView ? { opacity: 1, y: 0 } : {}}
-							className="text-amber-500 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
+							className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
 						>
 							Why ZorinTech
 						</motion.p>
@@ -78,14 +78,14 @@ const WhyUsSection = () => {
 							<motion.div
 								animate={{ rotate: 360 }}
 								transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-								className="absolute -inset-4 border border-dashed border-amber-200 rounded-full pointer-events-none"
+								className="absolute -inset-4 border border-dashed border-[#9fe9f2] rounded-full pointer-events-none"
 							/>
 							<div className="flex items-end gap-2 bg-white border border-gray-100 rounded-2xl px-8 py-6 shadow-sm">
 								<span className="font-display text-8xl font-black text-gray-950 leading-none tabular-nums">
 									{count}
 								</span>
 								<div className="mb-2">
-									<span className="font-black text-4xl text-amber-400">%</span>
+									<span className="font-black text-4xl text-[#09BACF]">%</span>
 									<p className="text-gray-400 text-xs mt-1 uppercase tracking-widest">Client retention</p>
 								</div>
 							</div>
@@ -102,9 +102,9 @@ const WhyUsSection = () => {
 									initial={{ opacity: 0, y: 24 }}
 									animate={inView ? { opacity: 1, y: 0 } : {}}
 									transition={{ duration: 0.5, delay: i * 0.07 + 0.2 }}
-									className="group bg-white rounded-2xl p-5 border border-gray-100 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-50 transition-all duration-400 cursor-default"
+									className="group bg-white rounded-2xl p-5 border border-gray-100 hover:border-[#34cee0] hover:shadow-lg hover:shadow-[#e8f9fb] transition-all duration-400 cursor-default"
 								>
-									<div className="w-10 h-10 bg-gray-50 group-hover:bg-amber-400 rounded-xl flex items-center justify-center text-gray-400 group-hover:text-gray-950 mb-4 transition-all duration-300">
+									<div className="w-10 h-10 bg-gray-50 group-hover:bg-[#09BACF] rounded-xl flex items-center justify-center text-gray-400 group-hover:text-gray-950 mb-4 transition-all duration-300">
 										<Icon className="w-4 h-4" />
 									</div>
 									<h4 className="font-bold text-gray-950 mb-1.5 text-sm group-hover:text-gray-950 transition-colors">

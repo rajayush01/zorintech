@@ -104,7 +104,7 @@ const ProjectCard = ({ project, index, inView }: { project: (typeof projects)[0]
 			transition={{ duration: 0.55, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
 			onHoverStart={() => setHovered(true)}
 			onHoverEnd={() => setHovered(false)}
-			className={`group relative border border-gray-100 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:shadow-amber-50/80 hover:border-amber-200 ${
+			className={`group relative border border-gray-100 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:shadow-[#e8f9fb]/80 hover:border-[#9fe9f2] ${
 				project.size === 'large' ? 'sm:col-span-2' : ''
 			}`}
 		>
@@ -113,14 +113,14 @@ const ProjectCard = ({ project, index, inView }: { project: (typeof projects)[0]
 				initial={false}
 				animate={{ scaleY: hovered ? 1 : 0 }}
 				transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-				className="absolute inset-0 bg-gray-950 origin-bottom z-0 rounded-2xl"
+				className="absolute inset-0 bg-[#241678] origin-bottom z-0 rounded-2xl"
 			/>
 
 			{/* Subtle warm tint (non-hover) */}
 			<motion.div
 				animate={{ opacity: hovered ? 0 : 1 }}
 				transition={{ duration: 0.3 }}
-				className="absolute inset-0 bg-gradient-to-br from-amber-50/40 via-white to-white z-0"
+				className="absolute inset-0 bg-gradient-to-br from-[#e8f9fb]/40 via-white to-white z-0"
 			/>
 
 			<div className="relative z-10 p-7 sm:p-8 h-full flex flex-col bg-gray-100">
@@ -128,7 +128,7 @@ const ProjectCard = ({ project, index, inView }: { project: (typeof projects)[0]
 				<div className="flex items-start justify-between mb-5 ">
 					<div className="flex flex-col gap-2">
 						<motion.span
-							animate={{ color: hovered ? '#F59E0B' : '#E5E7EB' }}
+							animate={{ color: hovered ? '#09BACF' : '#E5E7EB' }}
 							className="font-black text-[3.5rem] leading-none tabular-nums"
 						>
 							{project.number}
@@ -144,8 +144,8 @@ const ProjectCard = ({ project, index, inView }: { project: (typeof projects)[0]
 
 					<motion.div
 						animate={{
-							backgroundColor: hovered ? '#F59E0B' : 'transparent',
-							borderColor: hovered ? '#F59E0B' : '#E5E7EB',
+							backgroundColor: hovered ? '#09BACF' : 'transparent',
+							borderColor: hovered ? '#09BACF' : '#E5E7EB',
 							color: hovered ? '#0a0a0a' : '#9CA3AF',
 						}}
 						className="w-10 h-10 border rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
@@ -195,7 +195,7 @@ const ProjectCard = ({ project, index, inView }: { project: (typeof projects)[0]
 
 				{/* Bottom row */}
 				<div className="flex items-end justify-between mt-6 pt-5 border-t border-gray-100/20">
-					<div className="inline-flex items-baseline gap-1.5 px-3.5 py-2 bg-amber-400 rounded-full">
+					<div className="inline-flex items-baseline gap-1.5 px-3.5 py-2 bg-[#09BACF] rounded-full">
 						<span className="text-gray-950 font-black text-sm">{project.result}</span>
 						<span className="text-gray-950/60 text-xs">{project.resultLabel}</span>
 					</div>
@@ -242,7 +242,7 @@ const Work = () => {
 					<motion.div
 						animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.28, 0.15] }}
 						transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-						className="w-[600px] h-[600px] bg-amber-300 rounded-full blur-[150px]"
+						className="w-[600px] h-[600px] bg-[#34cee0] rounded-full blur-[150px]"
 					/>
 				</motion.div>
 
@@ -251,7 +251,7 @@ const Work = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
-						className="text-amber-500 text-xs font-bold uppercase tracking-[0.25em] mb-6"
+						className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-6"
 					>
 						Our Work
 					</motion.p>
@@ -274,7 +274,7 @@ const Work = () => {
 									initial={{ y: 80, opacity: 0 }}
 									animate={{ y: 0, opacity: 1 }}
 									transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-									className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-amber-400 leading-[0.92] tracking-tight"
+									className="font-display text-6xl sm:text-7xl lg:text-[6.5rem] font-black text-[#09BACF] leading-[0.92] tracking-tight"
 								>
 									speak for us.
 								</motion.h1>
@@ -328,14 +328,14 @@ const Work = () => {
 								whileTap={{ scale: 0.97 }}
 								className={`relative px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 overflow-hidden ${
 									activeFilter === cat
-										? 'bg-gray-950 text-white'
+										? 'bg-[#241678] text-white'
 										: 'border border-gray-200 text-gray-500 hover:border-gray-400 hover:text-gray-800'
 								}`}
 							>
 								{activeFilter === cat && (
 									<motion.span
 										layoutId="filter-pill"
-										className="absolute inset-0 bg-gray-950 rounded-full -z-10"
+										className="absolute inset-0 bg-[#241678] rounded-full -z-10"
 										transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 									/>
 								)}
@@ -382,7 +382,7 @@ const Work = () => {
 							<motion.p
 								initial={{ opacity: 0, y: 10 }}
 								animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-								className="text-amber-500 text-xs font-bold uppercase tracking-[0.25em] mb-4"
+								className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
 							>
 								Start Your Project
 							</motion.p>
@@ -401,7 +401,7 @@ const Work = () => {
 						>
 							<Link
 								to="/contact"
-								className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-950 text-white font-bold rounded-full hover:bg-amber-400 hover:text-gray-950 transition-all duration-300 text-sm"
+								className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#241678] text-white font-bold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
 							>
 								Start a Project
 								<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

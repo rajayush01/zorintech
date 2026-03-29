@@ -33,7 +33,7 @@ const ref = useRef(null);
 const inView = useInView(ref, { once: true, margin: '-80px' });
 
 return (
-<section ref={ref} className="py-24 sm:py-32 bg-gray-950 overflow-hidden">
+<section ref={ref} className="py-24 sm:py-32 bg-[#241678] overflow-hidden">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 {/* Header */}
 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
@@ -42,7 +42,7 @@ return (
 initial={{ opacity: 0, y: 20 }}
 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-className="text-amber-400 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
+className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
 >
 How We Work
 </motion.p>
@@ -84,27 +84,27 @@ className="relative group"
 initial={{ scaleX: 0 }}
 animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: i * 0.12 + 0.5 }}
-className="w-full h-full bg-gradient-to-r from-amber-400/40 to-gray-700 origin-left"
+className="w-full h-full bg-gradient-to-r from-[#09BACF]/40 to-gray-700 origin-left"
 />
 </div>
 )}
 
-<div className="p-6 sm:p-8 border border-gray-800 hover:border-amber-400/30 transition-colors duration-500 h-full group-hover:bg-gray-900/60">
+<div className="p-6 sm:p-8 border border-[#3d2aa0]/50 hover:border-[#09BACF]/30 transition-colors duration-500 h-full group-hover:bg-[#2e1e8a]/60">
 {/* Number circle */}
 <motion.div
 initial={{ scale: 0.5, opacity: 0 }}
 animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.12 + 0.15 }}
-className="w-14 h-14 border border-amber-400/30 rounded-full flex items-center justify-center mb-6 group-hover:border-amber-400 group-hover:bg-amber-400/5 transition-all duration-500"
+className="w-14 h-14 border border-[#09BACF]/30 rounded-full flex items-center justify-center mb-6 group-hover:border-[#09BACF] group-hover:bg-[#09BACF]/5 transition-all duration-500"
 >
-<span className="font-black text-lg text-amber-400">{step.number}</span>
+<span className="font-black text-lg text-[#09BACF]">{step.number}</span>
 </motion.div>
 
 <div className="inline-block px-2 py-0.5 bg-white/5 text-gray-500 text-[10px] uppercase tracking-widest rounded-full mb-4">
 {step.detail}
 </div>
 
-<h3 className="font-display font-black text-xl text-white mb-3 group-hover:text-amber-400 transition-colors duration-300">
+<h3 className="font-display font-black text-xl text-white mb-3 group-hover:text-[#09BACF] transition-colors duration-300">
 {step.title}
 </h3>
 <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-400 transition-colors duration-300">

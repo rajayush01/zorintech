@@ -10,7 +10,7 @@ const projects = [
 		desc: 'A luxury lab-grown diamond e-commerce platform with seamless checkout, product discovery, and a premium shopping experience.',
 		tags: ['React', 'Node.js', 'MongoDB'],
 		year: '2024',
-		color: 'from-amber-50 to-white',
+		color: 'from-[#e8f9fb] to-white',
 	},
 	{
 		number: '02',
@@ -28,7 +28,7 @@ const projects = [
 		desc: 'End-to-end hospital management ERP handling patient records, billing, inventory, and staff scheduling.',
 		tags: ['React', 'PostgreSQL', 'Docker'],
 		year: '2023',
-		color: 'from-amber-50/50 to-white',
+		color: 'from-[#e8f9fb]/50 to-white',
 	},
 	{
 		number: '04',
@@ -65,7 +65,7 @@ const ProjectRow = ({ project, index, inView }: { project: typeof projects[0]; i
 				{/* Number + year */}
 				<div className="flex items-center gap-4 lg:w-24 flex-shrink-0">
 					<motion.span
-						animate={{ color: hovered ? '#F59E0B' : '#E5E7EB' }}
+						animate={{ color: hovered ? '#09BACF' : '#E5E7EB' }}
 						className="font-black text-4xl sm:text-5xl leading-none transition-colors duration-300"
 					>
 						{project.number}
@@ -114,8 +114,8 @@ const ProjectRow = ({ project, index, inView }: { project: typeof projects[0]; i
 					<span className="text-gray-300 text-sm font-mono hidden sm:block">{project.year}</span>
 					<motion.div
 						animate={{
-							backgroundColor: hovered ? '#F59E0B' : 'transparent',
-							borderColor: hovered ? '#F59E0B' : '#E5E7EB',
+							backgroundColor: hovered ? '#09BACF' : 'transparent',
+							borderColor: hovered ? '#09BACF' : '#E5E7EB',
 							color: hovered ? '#0a0a0a' : '#9CA3AF',
 						}}
 						className="w-10 h-10 border rounded-full flex items-center justify-center transition-all duration-300"
@@ -141,7 +141,7 @@ const WorkSection = () => {
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
 							animate={inView ? { opacity: 1, y: 0 } : {}}
-							className="text-amber-500 text-xs font-semibold uppercase tracking-[0.2em] mb-4"
+							className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
 						>
 							Our Work
 						</motion.p>
@@ -161,7 +161,7 @@ const WorkSection = () => {
 						animate={inView ? { opacity: 1 } : {}}
 						transition={{ delay: 0.3 }}
 						href="/work"
-						className="group inline-flex items-center gap-2 text-gray-950 font-semibold hover:text-amber-500 transition-colors text-sm flex-shrink-0"
+						className="group inline-flex items-center gap-2 text-gray-950 font-semibold hover:text-[#09BACF] transition-colors text-sm flex-shrink-0"
 					>
 						View all projects
 						<ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

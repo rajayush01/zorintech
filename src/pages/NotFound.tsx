@@ -13,7 +13,7 @@ const NotFound: React.FC = () => {
 					transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 				>
 					<p className="font-display font-black text-[10rem] leading-none text-gray-950 tabular-nums select-none">
-						4<span className="text-amber-400">0</span>4
+						4<span className="text-[#09BACF]">0</span>4
 					</p>
 				</motion.div>
 
@@ -30,7 +30,7 @@ const NotFound: React.FC = () => {
 					<div className="flex flex-col sm:flex-row gap-3 justify-center">
 						<Link
 							to="/"
-							className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gray-950 text-white font-semibold rounded-full hover:bg-amber-400 hover:text-gray-950 transition-all duration-300 text-sm"
+							className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#241678] text-white font-semibold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
 						>
 							<ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
 							Go back home
