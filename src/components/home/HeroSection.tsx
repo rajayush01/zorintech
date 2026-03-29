@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import vid from "../../assets/bg1.mp4"
+import vid from "../../assets/bg3.mp4"
 
 
 const stats = [

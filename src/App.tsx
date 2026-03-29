@@ -6,6 +6,10 @@ import NotFound from './pages/NotFound';
 
 const Home = lazy(() => import('./pages/Home'));
 const Gallery = lazy(() => import('./pages/Gallery'));
+const Services = lazy(() => import('./pages/Services'));
+const Work = lazy(() => import('./pages/Work'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 const Fallback = () => (
 	<div className="flex items-center justify-center min-h-screen bg-white">
@@ -48,6 +52,10 @@ function App() {
 				>
 					<Route index element={<Home />} />
 					<Route path="gallery" element={<Gallery />} />
+					<Route path="services" element={<Services />} />
+					<Route path="work" element={<Work />} />
+					<Route path="about" element={<About />} />
+					<Route path="contact" element={<Contact />} />
 				</Route>
 				<Route
 					path="/404"
