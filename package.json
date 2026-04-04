@@ -33,6 +33,8 @@
 		"react-router-dom": "^6.30.1",
 		"react-slick": "^0.30.3",
 		"slick-carousel": "^1.8.1",
+		"three": "^0.183.2",
+		"three-globe": "^2.45.1",
 		"yet-another-react-lightbox": "^3.25.0"
 	},
 	"devDependencies": {

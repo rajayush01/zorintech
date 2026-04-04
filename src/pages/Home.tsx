@@ -6,11 +6,14 @@ import ProcessSection from '../components/home/ProcessSection';
 import WhyUsSection from '../components/home/WhyUsSection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import CTASection from '../components/home/CTASection';
+import Globe from '@/components/ui/Globe';
+import World from '@/components/ui/World';
 
 const Home = () => {
 	return (
 		<>
-			<HeroSection />
+			<Globe/>
+			<World/>
 			<MarqueeSection />
 			<ServicesSection />
 			<WorkSection />
