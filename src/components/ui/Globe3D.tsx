@@ -311,7 +311,7 @@ interface MarkerOverlayState {
 // Main Globe3D Component
 // ============================================================================
 
-export function Globe({
+export function Globe3D({
   markers = [],
   config = {},
   className,
@@ -340,6 +340,9 @@ export function Globe({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
     mount.appendChild(renderer.domElement);
 
     // ── Scene ─────────────────────────────────────────────────────────────
@@ -357,11 +360,13 @@ export function Globe({
     camera.lookAt(0, 0, 0);
 
     // ── Lights ────────────────────────────────────────────────────────────
-    scene.add(new THREE.AmbientLight(0xffffff, cfg.ambientIntensity));
-    const dirLight = new THREE.DirectionalLight(0xffffff, cfg.pointLightIntensity);
+    // Intentionally lower intensities — ACESFilmic tone mapping + sRGB output
+    // means the original defaultConfig values (0.6 ambient, 1.5 dir) blow out the texture
+    scene.add(new THREE.AmbientLight(0xffffff, cfg.ambientIntensity * 0.5));
+    const dirLight = new THREE.DirectionalLight(0xffffff, cfg.pointLightIntensity * 0.6);
     dirLight.position.set(cfg.radius * 5, cfg.radius * 2, cfg.radius * 5);
     scene.add(dirLight);
-    const fillLight = new THREE.DirectionalLight(0x88ccff, cfg.pointLightIntensity * 0.3);
+    const fillLight = new THREE.DirectionalLight(0x88ccff, cfg.pointLightIntensity * 0.15);
     fillLight.position.set(-cfg.radius * 3, cfg.radius, -cfg.radius * 2);
     scene.add(fillLight);
 
@@ -371,7 +376,9 @@ export function Globe({
 
     // Globe mesh
     const sphereGeo = new THREE.SphereGeometry(cfg.radius, 64, 64);
-    const globeMat = new THREE.MeshStandardMaterial({ roughness: 0.7, metalness: 0 });
+    // MeshPhongMaterial renders the NASA Blue Marble diffuse color faithfully
+    // without PBR energy conservation that tends to darken/desaturate at low metalness
+    const globeMat = new THREE.MeshPhongMaterial({ shininess: 5 });
     globeGroup.add(new THREE.Mesh(sphereGeo, globeMat));
 
     const texLoader = new THREE.TextureLoader();
@@ -616,4 +623,4 @@ export function Globe({
   );
 }
 
-export default Globe;
+export default Globe3D;
