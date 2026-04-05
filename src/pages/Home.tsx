@@ -6,13 +6,14 @@ import ProcessSection from '../components/home/ProcessSection';
 import WhyUsSection from '../components/home/WhyUsSection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import CTASection from '../components/home/CTASection';
-import Globe3D from '../components/ui/Globe3D';
-import World from '@/components/ui/World';
+// import Globe3D from '../components/ui/Globe3D';
+// import World from '@/components/ui/World';
 
 const Home = () => {
 	return (
 		<>
-			<Globe3D/>
+			<HeroSection/>
+			{/* <Globe3D/> */}
 			{/* <World/> */}
 			<MarqueeSection />
 			<ServicesSection />

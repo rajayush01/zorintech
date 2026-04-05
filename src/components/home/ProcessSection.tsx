@@ -1,122 +1,247 @@
-﻿import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+﻿"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 
 const steps = [
-{
-number: '01',
-title: 'Discovery',
-desc: 'We deep-dive into your business, users, and goals to define a clear product vision and technical roadmap.',
-detail: '12 weeks',
-},
-{
-number: '02',
-title: 'Design',
-desc: 'Our designers craft pixel-perfect interfaces grounded in user research, brand identity, and conversion principles.',
-detail: '23 weeks',
-},
-{
-number: '03',
-title: 'Build',
-desc: 'Agile development with weekly demos, rigorous testing, and transparent communication at every sprint.',
-detail: '4–8 weeks',
-},
-{
-number: '04',
-title: 'Launch & Scale',
-desc: 'We deploy, monitor, and continuously improve your product  ensuring it grows with your business.',
-detail: 'Ongoing',
-},
+  {
+    number: "01",
+    title: "Discovery",
+    detail: "1–2 weeks",
+    desc: "We deep-dive into your business, users, and goals to define a clear product vision and technical roadmap that sets the foundation for everything ahead.",
+    deliverables: [
+      "Stakeholder interviews",
+      "User research synthesis",
+      "Technical feasibility report",
+      "Product vision document",
+    ],
+  },
+  {
+    number: "02",
+    title: "Design",
+    detail: "2–3 weeks",
+    desc: "Our designers craft pixel-perfect interfaces grounded in user research, brand identity, and conversion principles — tested and refined before a line of code is written.",
+    deliverables: [
+      "Wireframes & user flows",
+      "High-fidelity UI mockups",
+      "Prototype & usability testing",
+      "Design system & component library",
+    ],
+  },
+  {
+    number: "03",
+    title: "Build",
+    detail: "4–8 weeks",
+    desc: "Agile development with weekly demos, rigorous testing, and transparent communication at every sprint — so you always know exactly where things stand.",
+    deliverables: [
+      "Weekly sprint demos",
+      "QA & automated testing",
+      "API integration & backend",
+      "Staging environment handoff",
+    ],
+  },
+  {
+    number: "04",
+    title: "Launch & Scale",
+    detail: "Ongoing",
+    desc: "We deploy, monitor, and continuously improve your product — ensuring it grows with your business, handles real traffic, and evolves with your users.",
+    deliverables: [
+      "Production deployment",
+      "Performance monitoring",
+      "Iterative improvements",
+      "Dedicated support SLA",
+    ],
+  },
 ];
 
 const ProcessSection = () => {
-const ref = useRef(null);
-const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [current, setCurrent] = useState(0);
 
-return (
-<section ref={ref} className="py-24 sm:py-32 bg-[#241678] overflow-hidden">
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-{/* Header */}
-<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20">
-<div>
-<motion.p
-initial={{ opacity: 0, y: 20 }}
-animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
->
-How We Work
-</motion.p>
-<motion.h2
-initial={{ opacity: 0, y: 30 }}
-animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-className="font-display text-5xl sm:text-6xl font-black text-white leading-[0.95] tracking-tight"
->
-Our
-<br />
-<span className="text-gray-600">Process</span>
-</motion.h2>
-</div>
-<motion.p
-initial={{ opacity: 0, y: 20 }}
-animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-className="text-gray-500 text-sm max-w-xs leading-relaxed"
->
-A structured, transparent approach that keeps you informed at every milestone.
-</motion.p>
-</div>
+  const goTo = (i: number) => setCurrent(i);
+  const navigate = (dir: number) => {
+    const next = current + dir;
+    if (next >= 0 && next < steps.length) setCurrent(next);
+  };
 
-{/* Steps */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
-{steps.map((step, i) => (
-<motion.div
-key={step.number}
-initial={{ opacity: 0, y: 40 }}
-animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.12 }}
-className="relative group"
->
-{/* Connector line */}
-{i < steps.length - 1 && (
-<div className="hidden lg:block absolute top-7 left-[calc(50%+28px)] right-0 h-px overflow-hidden">
-<motion.div
-initial={{ scaleX: 0 }}
-animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
-transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: i * 0.12 + 0.5 }}
-className="w-full h-full bg-gradient-to-r from-[#09BACF]/40 to-gray-700 origin-left"
-/>
-</div>
-)}
+  const active = steps[current];
 
-<div className="p-6 sm:p-8 border border-[#3d2aa0]/50 hover:border-[#09BACF]/30 transition-colors duration-500 h-full group-hover:bg-[#2e1e8a]/60">
-{/* Number circle */}
-<motion.div
-initial={{ scale: 0.5, opacity: 0 }}
-animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
-transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.12 + 0.15 }}
-className="w-14 h-14 border border-[#09BACF]/30 rounded-full flex items-center justify-center mb-6 group-hover:border-[#09BACF] group-hover:bg-[#09BACF]/5 transition-all duration-500"
->
-<span className="font-black text-lg text-[#09BACF]">{step.number}</span>
-</motion.div>
+  return (
+    <section className="relative bg-white py-20 sm:py-28 px-6 sm:px-12 lg:px-20 overflow-hidden">
 
-<div className="inline-block px-2 py-0.5 bg-white/5 text-gray-500 text-[10px] uppercase tracking-widest rounded-full mb-4">
-{step.detail}
-</div>
+      {/* Giant ghost background number */}
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={active.number}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="pointer-events-none select-none absolute -top-6 right-0 text-[220px] sm:text-[280px] font-black leading-none text-gray-100"
+        >
+          {active.number}
+        </motion.span>
+      </AnimatePresence>
 
-<h3 className="font-display font-black text-xl text-white mb-3 group-hover:text-[#09BACF] transition-colors duration-300">
-{step.title}
-</h3>
-<p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-400 transition-colors duration-300">
-{step.desc}
-</p>
-</div>
-</motion.div>
-))}
-</div>
-</div>
-</section>
-);
+      <div className="relative max-w-6xl mx-auto">
+
+        {/* Header */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.2em] mb-4"
+        >
+          How We Work
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="text-5xl sm:text-6xl font-black text-gray-950 leading-[0.95] tracking-tight mb-16"
+        >
+          Our
+          <br />
+          <span className="text-gray-300">Process</span>
+        </motion.h2>
+
+        {/* Step tabs */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 mb-12">
+          {steps.map((step, i) => (
+            <button
+              key={step.number}
+              onClick={() => goTo(i)}
+              className="relative text-left pt-5 pb-2 pr-6 focus:outline-none group"
+            >
+              {/* Top border track */}
+              <div className="absolute top-0 left-0 right-6 h-0.5 bg-gray-200 overflow-hidden">
+                <motion.div
+                  className="h-full bg-[#09BACF] origin-left"
+                  initial={false}
+                  animate={{ scaleX: i === current ? 1 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
+
+              {/* Dot */}
+              <motion.div
+                className="absolute -top-[5px] left-0 w-2.5 h-2.5 rounded-full"
+                animate={{
+                  backgroundColor: i === current ? "#09BACF" : "#e2e2de",
+                  scale: i === current ? 1.2 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+              />
+
+              {/* Step number */}
+              <motion.p
+                animate={{ color: i === current ? "#09BACF" : "#c0c0bc" }}
+                transition={{ duration: 0.3 }}
+                className="text-[11px] font-bold tracking-[0.15em] uppercase mb-2"
+              >
+                {step.number}
+              </motion.p>
+
+              {/* Step title */}
+              <motion.p
+                animate={{ color: i === current ? "#0a0a0a" : "#2a2a28" }}
+                transition={{ duration: 0.3 }}
+                className="font-black text-lg sm:text-xl group-hover:text-[#09BACF] transition-colors duration-200"
+              >
+                {step.title}
+              </motion.p>
+            </button>
+          ))}
+        </div>
+
+        {/* Content panel */}
+        <div className="min-h-[280px] sm:min-h-[220px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16 items-start"
+            >
+              {/* Description */}
+              <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
+                {active.desc}
+              </p>
+
+              {/* Meta: duration + deliverables */}
+              <div className="flex flex-col gap-5">
+                {/* Duration badge */}
+                <div className="inline-flex items-center gap-2 self-start bg-gray-50 rounded-full px-5 py-2.5 text-sm font-bold text-[#09BACF]">
+                  <Clock className="w-4 h-4" />
+                  {active.detail}
+                </div>
+
+                {/* Deliverables list */}
+                <div className="border border-gray-100 rounded-xl overflow-hidden">
+                  {active.deliverables.map((item, i) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: 8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: i * 0.06,
+                        duration: 0.35,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="flex items-center gap-3 px-4 py-3 text-sm text-gray-500 border-b border-gray-50 last:border-b-0"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#09BACF] flex-shrink-0" />
+                      {item}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Progress bar */}
+        <div className="mt-12 h-0.5 bg-gray-100 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-[#09BACF] rounded-full"
+            animate={{ width: `${((current + 1) / steps.length) * 100}%` }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          />
+        </div>
+
+        {/* Nav row */}
+        <div className="flex items-center justify-between mt-5">
+          <button
+            onClick={() => navigate(-1)}
+            disabled={current === 0}
+            className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-[#09BACF] disabled:opacity-30 disabled:cursor-default transition-colors duration-200"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Previous
+          </button>
+
+          <span className="text-xs font-bold text-gray-300 tracking-widest">
+            0{current + 1}&nbsp;/&nbsp;0{steps.length}
+          </span>
+
+          <button
+            onClick={() => navigate(1)}
+            disabled={current === steps.length - 1}
+            className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-[#09BACF] disabled:opacity-30 disabled:cursor-default transition-colors duration-200"
+          >
+            Next
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+
+      </div>
+    </section>
+  );
 };
 
 export default ProcessSection;
