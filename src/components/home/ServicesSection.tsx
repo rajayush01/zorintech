@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
@@ -156,9 +154,20 @@ export default function ServicesSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const current = services[active];
   const Icon = current.icon;
+
+  useEffect(() => {
+  if (isPaused) return;
+
+  const interval = setInterval(() => {
+    setActive((prev) => (prev + 1) % services.length);
+  }, 4000);
+
+  return () => clearInterval(interval);
+}, [isPaused]);
 
   return (
     <section ref={ref} className="py-24 sm:py-32 bg-white">
@@ -199,6 +208,8 @@ export default function ServicesSection() {
 
         {/* ── Main split layout ── */}
         <motion.div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.25 }}

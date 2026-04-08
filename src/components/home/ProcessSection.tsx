@@ -1,6 +1,4 @@
-﻿"use client";
-
-import { useState } from "react";
+﻿import { useState,useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 
@@ -57,17 +55,30 @@ const steps = [
 
 const ProcessSection = () => {
   const [current, setCurrent] = useState(0);
-
+const [isPaused, setIsPaused] = useState(false); 
   const goTo = (i: number) => setCurrent(i);
   const navigate = (dir: number) => {
     const next = current + dir;
     if (next >= 0 && next < steps.length) setCurrent(next);
   };
 
+  useEffect(() => {
+  if (isPaused) return;
+
+  const interval = setInterval(() => {
+    setCurrent((prev) => (prev + 1) % steps.length);
+  }, 4000);
+
+  return () => clearInterval(interval);
+}, [isPaused]);
+
   const active = steps[current];
 
   return (
-    <section className="relative bg-white py-20 sm:py-28 px-6 sm:px-12 lg:px-20 overflow-hidden">
+    <section 
+    onMouseEnter={() => setIsPaused(true)}
+  onMouseLeave={() => setIsPaused(false)}
+    className="relative bg-white py-20 sm:py-28 px-6 sm:px-12 lg:px-20 overflow-hidden">
 
       {/* Giant ghost background number */}
       <AnimatePresence mode="wait">
@@ -90,7 +101,7 @@ const ProcessSection = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 4, ease: "linear" }}
           className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.2em] mb-4"
         >
           How We Work
