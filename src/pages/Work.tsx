@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
 
 const categories = ['All', 'Web', 'Mobile', 'ERP', 'AI', 'Design'];
 
@@ -210,13 +209,11 @@ const ProjectCard = ({ project, index, inView }: { project: (typeof projects)[0]
 const Work = () => {
 	const heroRef = useRef<HTMLElement>(null);
 	const gridRef = useRef(null);
-	const ctaRef = useRef(null);
 
 	const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
 	const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
 
 	const gridInView = useInView(gridRef, { once: true, margin: '-80px' });
-	const ctaInView = useInView(ctaRef, { once: true, margin: '-80px' });
 
 	const [activeFilter, setActiveFilter] = useState('All');
 	const filtered = activeFilter === 'All' ? projects : projects.filter((p) => p.category === activeFilter);
@@ -354,85 +351,6 @@ const Work = () => {
 				</div>
 			</section>
 
-			{/* ── CTA ───────────────────────────────────────────────── */}
-			<section ref={ctaRef} className="py-16 sm:py-24 bg-[#FAFAFA]">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					{/* Accent line */}
-					<div className="h-px w-full bg-gradient-to-r from-transparent via-[#09BACF]/40 to-transparent mb-16" />
-
-					<div className="relative bg-white border border-gray-100 rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden shadow-sm">
-						{/* Top cyan stripe */}
-						<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#09BACF] via-[#34cee0] to-transparent" />
-
-						{/* Background blobs */}
-						<div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#09BACF]/5 rounded-full blur-[100px] pointer-events-none" />
-						<div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#241678]/4 rounded-full blur-[80px] pointer-events-none" />
-
-						{/* Dot grid */}
-						<div
-							className="absolute inset-0 opacity-[0.025] pointer-events-none"
-							style={{
-								backgroundImage: 'radial-gradient(circle, #09BACF 1px, transparent 1px)',
-								backgroundSize: '32px 32px',
-							}}
-						/>
-
-						<motion.div
-							initial={{ opacity: 0, y: 30 }}
-							animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.7 }}
-							className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12"
-						>
-							<div>
-								<motion.div
-									initial={{ opacity: 0, scale: 0.85 }}
-									animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
-									transition={{ delay: 0.1 }}
-									className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#09BACF]/30 bg-[#e8f9fb] rounded-full mb-6"
-								>
-									<span className="w-1.5 h-1.5 bg-[#09BACF] rounded-full animate-pulse" />
-									<span className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.18em]">Start Your Project</span>
-								</motion.div>
-
-								<motion.p
-									initial={{ opacity: 0, y: 20 }}
-									animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-									transition={{ delay: 0.15 }}
-									className="text-[#09BACF] text-xs font-bold uppercase tracking-[0.25em] mb-4"
-								>
-									Your project could be next.
-								</motion.p>
-								<h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 leading-[0.95] tracking-tight">
-									Ready to build
-									<br />
-									<span className="text-gray-300">something great?</span>
-								</h2>
-							</div>
-
-							<motion.div
-								initial={{ opacity: 0, x: 30 }}
-								animate={ctaInView ? { opacity: 1, x: 0 } : {}}
-								transition={{ duration: 0.7, delay: 0.2 }}
-								className="flex flex-col sm:flex-row gap-3 flex-shrink-0"
-							>
-								<Link
-									to="/contact"
-									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:scale-105 hover:shadow-xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
-								>
-									Start a Project
-									<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-								</Link>
-								<Link
-									to="/services"
-									className="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-gray-600 font-medium rounded-full hover:border-gray-400 hover:text-gray-950 transition-all duration-300 text-sm"
-								>
-									Our Services
-								</Link>
-							</motion.div>
-						</motion.div>
-					</div>
-				</div>
-			</section>
 		</>
 	);
 };
