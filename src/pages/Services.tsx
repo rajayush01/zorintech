@@ -72,6 +72,13 @@ const services = [
 	},
 ];
 
+const processSteps = [
+	{ step: '01', label: 'Discovery', detail: '1–2 weeks', desc: 'Deep-dive into goals, users, and technical scope.' },
+	{ step: '02', label: 'Design', detail: '2–3 weeks', desc: 'Pixel-perfect interfaces grounded in user research.' },
+	{ step: '03', label: 'Build', detail: '4–8 weeks', desc: 'Agile sprints with weekly demos and full transparency.' },
+	{ step: '04', label: 'Launch', detail: 'Ongoing', desc: 'Deploy, monitor, and scale — indefinitely.' },
+];
+
 const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]; index: number; inView: boolean }) => {
 	const [open, setOpen] = useState(false);
 	const [hovered, setHovered] = useState(false);
@@ -91,15 +98,14 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 				initial={{ scaleX: 0 }}
 				animate={inView ? { scaleX: 1 } : {}}
 				transition={{ duration: 1, delay: index * 0.1 + 0.4, ease: [0.22, 1, 0.36, 1] }}
-				className="h-[2px] bg-[#09BACF] origin-left"
+				className="h-[2px] bg-gradient-to-r from-[#09BACF] to-[#34cee0] origin-left"
 			/>
 
-			{/* Hover fill — slides up from bottom */}
+			{/* Subtle cyan tint on hover */}
 			<motion.div
-				initial={false}
-				animate={{ scaleY: hovered ? 1 : 0 }}
-				transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-				className="absolute inset-0 bg-[#241678] origin-bottom z-0 rounded-2xl"
+				animate={{ opacity: hovered ? 1 : 0 }}
+				transition={{ duration: 0.4 }}
+				className="absolute inset-0 bg-gradient-to-br from-[#e8f9fb]/20 via-white to-white pointer-events-none z-0"
 			/>
 
 			<div className="relative z-10 p-7 sm:p-8">
@@ -107,39 +113,28 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 				<div className="flex items-start justify-between mb-6">
 					<motion.div
 						animate={{ backgroundColor: hovered ? 'rgba(9,186,207,0.15)' : 'rgba(9,186,207,0.08)' }}
-						className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300"
+						transition={{ duration: 0.3 }}
+						className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
 					>
-						<Icon
-							className={`w-5 h-5 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-[#09BACF]'}`}
-						/>
+						<Icon className="w-5 h-5 text-[#09BACF]" />
 					</motion.div>
-					<span
-						className={`font-black text-5xl leading-none transition-colors duration-300 ${hovered ? 'text-white/10' : 'text-gray-50'}`}
-					>
+					<span className={`font-black text-5xl leading-none transition-colors duration-300 ${hovered ? 'text-[#09BACF]/15' : 'text-gray-50'}`}>
 						{service.number}
 					</span>
 				</div>
 
 				{/* Tagline */}
-				<p
-					className={`text-[10px] font-bold uppercase tracking-[0.2em] mb-1.5 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-[#09BACF]'}`}
-				>
+				<p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1.5 text-[#09BACF]">
 					{service.tagline}
 				</p>
 
 				{/* Title */}
-				<h3
-					className={`font-display font-black text-xl mb-3 transition-colors duration-300 ${hovered ? 'text-white' : 'text-gray-950'}`}
-				>
+				<h3 className={`font-display font-black text-xl mb-3 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-gray-950'}`}>
 					{service.title}
 				</h3>
 
 				{/* Desc */}
-				<p
-					className={`text-sm leading-relaxed mb-5 transition-colors duration-300 ${hovered ? 'text-gray-400' : 'text-gray-400'}`}
-				>
-					{service.desc}
-				</p>
+				<p className="text-sm leading-relaxed mb-5 text-gray-400">{service.desc}</p>
 
 				{/* Tags */}
 				<div className="flex flex-wrap gap-1.5 mb-5">
@@ -148,7 +143,7 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 							key={tag}
 							className={`px-2.5 py-1 text-xs rounded-full border transition-all duration-300 ${
 								hovered
-									? 'border-white/10 text-gray-500 bg-white/5'
+									? 'border-[#09BACF]/20 text-[#09BACF] bg-[#e8f9fb]'
 									: 'border-gray-100 text-gray-500 bg-gray-50'
 							}`}
 						>
@@ -178,9 +173,7 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 							transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
 							className="overflow-hidden"
 						>
-							<div
-								className={`pt-5 mt-5 border-t transition-colors duration-300 ${hovered ? 'border-white/10' : 'border-gray-100'}`}
-							>
+							<div className="pt-5 mt-5 border-t border-gray-100">
 								<div className="grid grid-cols-2 gap-2.5 mb-5">
 									{service.features.map((f, fi) => (
 										<motion.div
@@ -193,11 +186,7 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 											<div className="w-4 h-4 bg-[#09BACF] rounded-full flex items-center justify-center flex-shrink-0">
 												<Check className="w-2.5 h-2.5 text-gray-950" />
 											</div>
-											<span
-												className={`text-xs transition-colors duration-300 ${hovered ? 'text-gray-400' : 'text-gray-500'}`}
-											>
-												{f}
-											</span>
+											<span className="text-xs text-gray-500">{f}</span>
 										</motion.div>
 									))}
 								</div>
@@ -232,7 +221,6 @@ const Services = () => {
 		<>
 			{/* ── Hero ─────────────────────────────────────────────── */}
 			<section ref={heroRef} className="relative bg-white pt-32 pb-28 sm:pt-44 sm:pb-36 overflow-hidden">
-				{/* Grid texture */}
 				<div
 					className="absolute inset-0 opacity-[0.04] pointer-events-none"
 					style={{
@@ -240,20 +228,20 @@ const Services = () => {
 						backgroundSize: '56px 56px',
 					}}
 				/>
+				<div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#09BACF]/6 rounded-full blur-[120px] pointer-events-none" />
+				<div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#241678]/4 rounded-full blur-[100px] pointer-events-none" />
 
-				{/* Parallax amber glow */}
 				<motion.div
 					style={{ y: heroY, opacity: heroOpacity }}
 					className="absolute top-1/2 left-1/3 -translate-y-1/2 pointer-events-none"
 				>
 					<motion.div
-						animate={{ scale: [1, 1.25, 1], opacity: [0.18, 0.32, 0.18] }}
+						animate={{ scale: [1, 1.25, 1], opacity: [0.12, 0.24, 0.12] }}
 						transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
 						className="w-[500px] h-[500px] bg-[#34cee0] rounded-full blur-[130px]"
 					/>
 				</motion.div>
 
-				{/* Animated number ticker in background */}
 				<div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-2 pointer-events-none select-none">
 					{services.map((s, i) => (
 						<motion.span
@@ -308,7 +296,6 @@ const Services = () => {
 						From concept to deployment, we cover every layer of the digital stack with precision and craft.
 					</motion.p>
 
-					{/* Pill category pills */}
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -321,7 +308,7 @@ const Services = () => {
 								initial={{ opacity: 0, scale: 0.85 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ delay: 0.55 + i * 0.07 }}
-								whileHover={{ scale: 1.05, borderColor: 'rgba(245,158,11,0.6)', color: '#09BACF' }}
+								whileHover={{ scale: 1.05, borderColor: 'rgba(9,186,207,0.5)', color: '#09BACF' }}
 								className="px-4 py-2 border border-gray-200 text-gray-400 text-xs font-medium rounded-full cursor-default transition-colors duration-300"
 							>
 								{s.title}
@@ -343,9 +330,11 @@ const Services = () => {
 			</section>
 
 			{/* ── Process Strip ─────────────────────────────────────── */}
-			<section ref={processRef} className="py-24 bg-[#241678] overflow-hidden">
+			<section ref={processRef} className="py-24 bg-[#FAFAFA] overflow-hidden">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					{/* Header */}
+					{/* Accent rule */}
+					<div className="h-px w-full bg-gradient-to-r from-transparent via-[#09BACF]/40 to-transparent mb-16" />
+
 					<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
 						<div>
 							<motion.p
@@ -359,74 +348,46 @@ const Services = () => {
 								initial={{ opacity: 0, y: 30 }}
 								animate={processInView ? { opacity: 1, y: 0 } : {}}
 								transition={{ delay: 0.1 }}
-								className="font-display text-5xl sm:text-6xl font-black text-white leading-[0.95] tracking-tight"
+								className="font-display text-5xl sm:text-6xl font-black text-gray-950 leading-[0.95] tracking-tight"
 							>
 								Four steps to
 								<br />
-								<span className="text-gray-700">your product.</span>
+								<span className="text-gray-300">your product.</span>
 							</motion.h2>
 						</div>
 					</div>
 
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#3d2aa0]/50">
-						{[
-							{
-								step: '01',
-								label: 'Discovery',
-								detail: '1–2 weeks',
-								desc: 'Deep-dive into goals, users, and technical scope.',
-							},
-							{
-								step: '02',
-								label: 'Design',
-								detail: '2–3 weeks',
-								desc: 'Pixel-perfect interfaces grounded in user research.',
-							},
-							{
-								step: '03',
-								label: 'Build',
-								detail: '4–8 weeks',
-								desc: 'Agile sprints with weekly demos and full transparency.',
-							},
-							{
-								step: '04',
-								label: 'Launch',
-								detail: 'Ongoing',
-								desc: 'Deploy, monitor, and scale — indefinitely.',
-							},
-						].map((item, i) => (
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+						{processSteps.map((item, i) => (
 							<motion.div
 								key={item.step}
 								initial={{ opacity: 0, y: 30 }}
 								animate={processInView ? { opacity: 1, y: 0 } : {}}
 								transition={{ duration: 0.55, delay: i * 0.12 }}
-								className="group bg-[#241678] p-8 hover:bg-[#2e1e8a] transition-colors duration-400 cursor-default"
+								className="group bg-white border border-gray-100 rounded-2xl p-7 hover:border-[#9fe9f2] hover:shadow-xl hover:shadow-[#e8f9fb]/80 transition-all duration-400 cursor-default relative overflow-hidden"
 							>
-								{/* Animated circle */}
+								{/* Top accent */}
+								<motion.div
+									initial={{ scaleX: 0 }}
+									animate={processInView ? { scaleX: 1 } : {}}
+									transition={{ duration: 0.8, delay: i * 0.12 + 0.4 }}
+									className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#09BACF] to-[#34cee0] origin-left"
+								/>
+
 								<motion.div
 									whileHover={{ scale: 1.05 }}
-									className="w-12 h-12 border border-[#09BACF]/25 group-hover:border-[#09BACF] group-hover:bg-[#09BACF]/5 rounded-full flex items-center justify-center mb-6 transition-all duration-400"
+									className="w-12 h-12 border border-[#09BACF]/20 group-hover:border-[#09BACF] group-hover:bg-[#e8f9fb] rounded-full flex items-center justify-center mb-6 transition-all duration-400"
 								>
 									<span className="font-black text-[#09BACF] text-sm">{item.step}</span>
 								</motion.div>
 
-								{/* Animated connector line (desktop) */}
-								{i < 3 && (
-									<motion.div
-										initial={{ scaleX: 0 }}
-										animate={processInView ? { scaleX: 1 } : {}}
-										transition={{ duration: 0.8, delay: i * 0.12 + 0.5 }}
-										className="hidden lg:block absolute top-[52px] left-full w-[1px] h-px bg-[#09BACF]/20 origin-left"
-									/>
-								)}
-
-								<span className="inline-block px-2 py-0.5 bg-white/5 text-gray-600 text-[9px] uppercase tracking-widest rounded-full mb-3">
+								<span className="inline-block px-2.5 py-0.5 bg-gray-50 text-gray-400 text-[9px] uppercase tracking-widest rounded-full border border-gray-100 mb-3">
 									{item.detail}
 								</span>
-								<h3 className="font-display font-black text-xl text-white mb-2 group-hover:text-[#09BACF] transition-colors duration-300">
+								<h3 className="font-display font-black text-xl text-gray-950 mb-2 group-hover:text-[#09BACF] transition-colors duration-300">
 									{item.label}
 								</h3>
-								<p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-500 transition-colors duration-300">
+								<p className="text-gray-400 text-sm leading-relaxed">
 									{item.desc}
 								</p>
 							</motion.div>
@@ -438,24 +399,20 @@ const Services = () => {
 			{/* ── CTA ───────────────────────────────────────────────── */}
 			<section ref={ctaRef} className="py-16 sm:py-24 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 50 }}
-						animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-						className="relative bg-[#241678] rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
-					>
-						{/* Pulsing amber glow */}
-						<motion.div
-							animate={{ scale: [1, 1.35, 1], opacity: [0.14, 0.28, 0.14] }}
-							transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-							className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-[#09BACF] rounded-full blur-[100px] pointer-events-none"
-						/>
-						{/* Grid overlay */}
+					<div className="relative bg-white border border-gray-100 rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden shadow-sm text-center">
+						{/* Top cyan stripe */}
+						<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#09BACF] via-[#34cee0] to-transparent" />
+
+						{/* Background blobs */}
+						<div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-[#09BACF]/8 rounded-full blur-[100px] pointer-events-none" />
+						<div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#241678]/4 rounded-full blur-[80px] pointer-events-none" />
+
+						{/* Dot grid */}
 						<div
 							className="absolute inset-0 opacity-[0.025] pointer-events-none"
 							style={{
-								backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
-								backgroundSize: '48px 48px',
+								backgroundImage: 'radial-gradient(circle, #09BACF 1px, transparent 1px)',
+								backgroundSize: '32px 32px',
 							}}
 						/>
 
@@ -463,8 +420,8 @@ const Services = () => {
 							<motion.div
 								initial={{ opacity: 0, scale: 0.85 }}
 								animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
-								transition={{ delay: 0.15 }}
-								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#09BACF]/30 rounded-full mb-8"
+								transition={{ delay: 0.1 }}
+								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#09BACF]/30 bg-[#e8f9fb] rounded-full mb-8"
 							>
 								<span className="w-1.5 h-1.5 bg-[#09BACF] rounded-full animate-pulse" />
 								<span className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.18em]">
@@ -476,21 +433,20 @@ const Services = () => {
 								initial={{ opacity: 0, y: 30 }}
 								animate={ctaInView ? { opacity: 1, y: 0 } : {}}
 								transition={{ delay: 0.2 }}
-								className="font-display text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight mb-6"
+								className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 leading-[0.95] tracking-tight mb-4"
 							>
 								Not sure which service
 								<br />
-								<span className="text-[#09BACF]">you need?</span>
+								<span className="text-gray-300">you need?</span>
 							</motion.h2>
 
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
 								animate={ctaInView ? { opacity: 1, y: 0 } : {}}
 								transition={{ delay: 0.3 }}
-								className="text-gray-500 text-base sm:text-lg max-w-lg mx-auto mb-10"
+								className="text-gray-400 text-base sm:text-lg max-w-lg mx-auto mb-10"
 							>
-								Tell us your challenge. We'll recommend the right approach and build a tailored proposal
-								within 24 hours.
+								Tell us your challenge. We'll recommend the right approach and build a tailored proposal within 24 hours.
 							</motion.p>
 
 							<motion.div
@@ -501,20 +457,20 @@ const Services = () => {
 							>
 								<Link
 									to="/contact"
-									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:scale-105 hover:shadow-2xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
+									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:scale-105 hover:shadow-xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
 								>
 									Get a Free Consultation
 									<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
 								</Link>
 								<Link
 									to="/work"
-									className="inline-flex items-center justify-center px-8 py-4 border border-white/10 text-white font-medium rounded-full hover:border-white/30 transition-all duration-300 text-sm"
+									className="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-gray-600 font-medium rounded-full hover:border-gray-400 hover:text-gray-950 transition-all duration-300 text-sm"
 								>
 									See Our Work
 								</Link>
 							</motion.div>
 						</div>
-					</motion.div>
+					</div>
 				</div>
 			</section>
 		</>

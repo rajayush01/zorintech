@@ -82,7 +82,7 @@ const Contact = () => {
 	const [form, setForm] = useState({ name: '', email: '', company: '', service: '', budget: '', message: '' });
 	const [submitted, setSubmitted] = useState(false);
 	const [focused, setFocused] = useState<string | null>(null);
-	const [step, setStep] = useState(0); // 0=contact, 1=project, 2=message
+	const [step, setStep] = useState(0);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -104,18 +104,18 @@ const Contact = () => {
 		<>
 			{/* ── Hero ─────────────────────────────────────────────── */}
 			<section className="relative bg-white pt-32 pb-28 sm:pt-44 sm:pb-36 overflow-hidden">
-				{/* Grid texture */}
 				<div
 					className="absolute inset-0 opacity-[0.035] pointer-events-none"
 					style={{
-						backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
+						backgroundImage: `linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px)`,
 						backgroundSize: '56px 56px',
 					}}
 				/>
+				<div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#09BACF]/6 rounded-full blur-[120px] pointer-events-none" />
+				<div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#241678]/4 rounded-full blur-[100px] pointer-events-none" />
 
-				{/* Amber glow — left position */}
 				<motion.div
-					animate={{ scale: [1, 1.25, 1], opacity: [0.08, 0.2, 0.08] }}
+					animate={{ scale: [1, 1.25, 1], opacity: [0.06, 0.16, 0.06] }}
 					transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
 					className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#09BACF] rounded-full blur-[140px] pointer-events-none"
 				/>
@@ -164,7 +164,7 @@ const Contact = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.5 }}
-						className="inline-flex items-center gap-2.5 px-4 py-2 border border-gray-200 rounded-full"
+						className="inline-flex items-center gap-2.5 px-4 py-2 border border-gray-200 rounded-full bg-white shadow-sm"
 					>
 						<span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
 						<span className="text-gray-400 text-xs font-medium">Average response time: under 4 hours</span>
@@ -186,14 +186,13 @@ const Contact = () => {
 						>
 							<AnimatePresence mode="wait">
 								{submitted ? (
-									/* Success state */
 									<motion.div
 										key="success"
 										initial={{ opacity: 0, scale: 0.92 }}
 										animate={{ opacity: 1, scale: 1 }}
 										exit={{ opacity: 0 }}
 										transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-										className="flex flex-col items-center justify-center text-center py-28 px-8 bg-gray-50 rounded-3xl border border-gray-100"
+										className="flex flex-col items-center justify-center text-center py-28 px-8 bg-[#FAFAFA] rounded-3xl border border-gray-100"
 									>
 										<motion.div
 											initial={{ scale: 0, rotate: -20 }}
@@ -221,9 +220,7 @@ const Contact = () => {
 										</motion.p>
 									</motion.div>
 								) : (
-									/* Form */
 									<motion.form key="form" onSubmit={handleSubmit} className="space-y-6">
-
 										{/* Step indicator */}
 										<div className="flex items-center gap-0 mb-8">
 											{steps.map((s, i) => (
@@ -247,8 +244,8 @@ const Contact = () => {
 											))}
 										</div>
 
-										{/* Step 0 — Contact */}
 										<AnimatePresence mode="wait">
+											{/* Step 0 — Contact */}
 											{step === 0 && (
 												<motion.div
 													key="step0"
@@ -260,57 +257,41 @@ const Contact = () => {
 												>
 													<div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 														<div>
-															<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">
-																Your Name *
-															</label>
+															<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">Your Name *</label>
 															<input
-																required
-																type="text"
-																placeholder="Alex Johnson"
+																required type="text" placeholder="Alex Johnson"
 																value={form.name}
 																onChange={(e) => setForm({ ...form, name: e.target.value })}
-																onFocus={() => setFocused('name')}
-																onBlur={() => setFocused(null)}
+																onFocus={() => setFocused('name')} onBlur={() => setFocused(null)}
 																className={inputClass('name')}
 															/>
 														</div>
 														<div>
-															<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">
-																Email Address *
-															</label>
+															<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">Email Address *</label>
 															<input
-																required
-																type="email"
-																placeholder="alex@company.com"
+																required type="email" placeholder="alex@company.com"
 																value={form.email}
 																onChange={(e) => setForm({ ...form, email: e.target.value })}
-																onFocus={() => setFocused('email')}
-																onBlur={() => setFocused(null)}
+																onFocus={() => setFocused('email')} onBlur={() => setFocused(null)}
 																className={inputClass('email')}
 															/>
 														</div>
 													</div>
 													<div>
-														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">
-															Company
-														</label>
+														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">Company</label>
 														<input
-															type="text"
-															placeholder="Your company name"
+															type="text" placeholder="Your company name"
 															value={form.company}
 															onChange={(e) => setForm({ ...form, company: e.target.value })}
-															onFocus={() => setFocused('company')}
-															onBlur={() => setFocused(null)}
+															onFocus={() => setFocused('company')} onBlur={() => setFocused(null)}
 															className={inputClass('company')}
 														/>
 													</div>
 													<div className="flex justify-end">
 														<motion.button
-															type="button"
-															whileHover={{ scale: 1.03 }}
-															whileTap={{ scale: 0.97 }}
+															type="button" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
 															onClick={() => form.name && form.email && setStep(1)}
-															className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#241678] text-white font-bold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
+															className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:shadow-xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
 														>
 															Next: Project Details
 															<ArrowUpRight className="w-4 h-4" />
@@ -330,21 +311,17 @@ const Contact = () => {
 													className="space-y-6"
 												>
 													<div>
-														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-3">
-															Service Needed
-														</label>
+														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-3">Service Needed</label>
 														<div className="flex flex-wrap gap-2">
 															{serviceOptions.map((s) => (
 																<motion.button
-																	key={s}
-																	type="button"
-																	whileHover={{ scale: 1.03 }}
-																	whileTap={{ scale: 0.97 }}
+																	key={s} type="button"
+																	whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
 																	onClick={() => setForm({ ...form, service: s })}
 																	className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all duration-250 ${
 																		form.service === s
-																			? 'bg-[#241678] text-white border-gray-950'
-																			: 'border-gray-200 text-gray-500 hover:border-gray-400'
+																			? 'bg-[#09BACF] text-gray-950 border-[#09BACF]'
+																			: 'border-gray-200 text-gray-500 hover:border-[#09BACF]/40'
 																	}`}
 																>
 																	{s}
@@ -353,21 +330,17 @@ const Contact = () => {
 														</div>
 													</div>
 													<div>
-														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-3">
-															Project Budget
-														</label>
+														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-3">Project Budget</label>
 														<div className="flex flex-wrap gap-2">
 															{budgets.map((b) => (
 																<motion.button
-																	key={b}
-																	type="button"
-																	whileHover={{ scale: 1.03 }}
-																	whileTap={{ scale: 0.97 }}
+																	key={b} type="button"
+																	whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
 																	onClick={() => setForm({ ...form, budget: b })}
 																	className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all duration-250 ${
 																		form.budget === b
 																			? 'bg-[#09BACF] text-gray-950 border-[#09BACF]'
-																			: 'border-gray-200 text-gray-500 hover:border-[#34cee0]'
+																			: 'border-gray-200 text-gray-500 hover:border-[#09BACF]/40'
 																	}`}
 																>
 																	{b}
@@ -376,19 +349,11 @@ const Contact = () => {
 														</div>
 													</div>
 													<div className="flex justify-between">
-														<button
-															type="button"
-															onClick={() => setStep(0)}
-															className="text-sm text-gray-400 hover:text-gray-700 transition-colors font-medium"
-														>
-															← Back
-														</button>
+														<button type="button" onClick={() => setStep(0)} className="text-sm text-gray-400 hover:text-gray-700 transition-colors font-medium">← Back</button>
 														<motion.button
-															type="button"
-															whileHover={{ scale: 1.03 }}
-															whileTap={{ scale: 0.97 }}
+															type="button" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
 															onClick={() => setStep(2)}
-															className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#241678] text-white font-bold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
+															className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:shadow-xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
 														>
 															Next: Your Message
 															<ArrowUpRight className="w-4 h-4" />
@@ -408,26 +373,21 @@ const Contact = () => {
 													className="space-y-5"
 												>
 													<div>
-														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">
-															Tell Us About Your Project *
-														</label>
+														<label className="block text-xs font-bold text-gray-500 uppercase tracking-[0.15em] mb-2">Tell Us About Your Project *</label>
 														<textarea
-															required
-															rows={6}
+															required rows={6}
 															placeholder="Describe your project, goals, timeline, and any specific requirements..."
 															value={form.message}
 															onChange={(e) => setForm({ ...form, message: e.target.value })}
-															onFocus={() => setFocused('message')}
-															onBlur={() => setFocused(null)}
+															onFocus={() => setFocused('message')} onBlur={() => setFocused(null)}
 															className={`${inputClass('message')} resize-none`}
 														/>
 													</div>
 
-													{/* Summary pill */}
 													{(form.service || form.budget) && (
 														<div className="flex flex-wrap gap-2">
 															{form.service && (
-																<span className="px-3 py-1 bg-[#241678] text-white text-xs font-medium rounded-full">{form.service}</span>
+																<span className="px-3 py-1 bg-[#e8f9fb] text-[#09BACF] text-xs font-bold rounded-full border border-[#cdf3f8]">{form.service}</span>
 															)}
 															{form.budget && (
 																<span className="px-3 py-1 bg-[#09BACF] text-gray-950 text-xs font-bold rounded-full">{form.budget}</span>
@@ -436,18 +396,10 @@ const Contact = () => {
 													)}
 
 													<div className="flex justify-between items-center">
-														<button
-															type="button"
-															onClick={() => setStep(1)}
-															className="text-sm text-gray-400 hover:text-gray-700 transition-colors font-medium"
-														>
-															← Back
-														</button>
+														<button type="button" onClick={() => setStep(1)} className="text-sm text-gray-400 hover:text-gray-700 transition-colors font-medium">← Back</button>
 														<motion.button
-															type="submit"
-															whileHover={{ scale: 1.03 }}
-															whileTap={{ scale: 0.97 }}
-															className="group inline-flex items-center gap-2 px-8 py-4 bg-[#241678] text-white font-bold rounded-full hover:bg-[#09BACF] hover:text-gray-950 transition-all duration-300 text-sm"
+															type="submit" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+															className="group inline-flex items-center gap-2 px-8 py-4 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:shadow-xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
 														>
 															Send Message
 															<Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -468,13 +420,13 @@ const Contact = () => {
 							transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
 							className="space-y-4"
 						>
-							{/* Contact details card */}
-							<div className="bg-[#241678] rounded-2xl p-7 relative overflow-hidden">
-								<motion.div
-									animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.2, 0.08] }}
-									transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-									className="absolute top-0 right-0 w-52 h-52 bg-[#09BACF] rounded-full blur-[70px] pointer-events-none"
-								/>
+							{/* Contact details card — light theme */}
+							<div className="bg-[#FAFAFA] border border-gray-100 rounded-2xl p-7 relative overflow-hidden">
+								{/* Top cyan stripe */}
+								<div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#09BACF] to-[#34cee0]" />
+								{/* Subtle blob */}
+								<div className="absolute top-0 right-0 w-40 h-40 bg-[#09BACF]/8 rounded-full blur-[60px] pointer-events-none" />
+
 								<div className="relative z-10 space-y-5">
 									<p className="text-[#09BACF] text-[10px] font-bold uppercase tracking-[0.25em]">Contact Details</p>
 									{[
@@ -485,12 +437,12 @@ const Contact = () => {
 										const Icon = item.icon;
 										return (
 											<a key={item.label} href={item.href} className="flex items-start gap-3 group">
-												<div className="w-9 h-9 bg-white/5 group-hover:bg-[#09BACF] rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300">
+												<div className="w-9 h-9 bg-white border border-gray-100 group-hover:bg-[#09BACF] group-hover:border-[#09BACF] rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300">
 													<Icon className="w-4 h-4 text-gray-400 group-hover:text-gray-950 transition-colors duration-300" />
 												</div>
 												<div>
-													<p className="text-gray-600 text-[10px] uppercase tracking-widest">{item.label}</p>
-													<p className="text-white text-sm font-medium group-hover:text-[#09BACF] transition-colors duration-300">
+													<p className="text-gray-400 text-[10px] uppercase tracking-widest">{item.label}</p>
+													<p className="text-gray-950 text-sm font-medium group-hover:text-[#09BACF] transition-colors duration-300">
 														{item.value}
 													</p>
 												</div>
@@ -515,10 +467,10 @@ const Contact = () => {
 											initial={{ opacity: 0, x: 16 }}
 											animate={formInView ? { opacity: 1, x: 0 } : {}}
 											transition={{ delay: 0.3 + i * 0.07 }}
-											className="flex items-center justify-between"
+											className="flex items-center justify-between group cursor-default"
 										>
 											<div>
-												<p className="text-gray-950 text-sm font-bold">{office.city}</p>
+												<p className="text-gray-950 text-sm font-bold group-hover:text-[#09BACF] transition-colors duration-200">{office.city}</p>
 												<p className="text-gray-400 text-xs">{office.country}</p>
 											</div>
 											<span className="px-2.5 py-1 bg-[#e8f9fb] text-[#09BACF] text-[10px] font-bold rounded-full border border-[#cdf3f8]">
@@ -529,11 +481,12 @@ const Contact = () => {
 								</div>
 							</div>
 
-							{/* Guarantee card */}
-							<div className="bg-[#09BACF] rounded-2xl p-6">
-								<div className="flex items-start gap-3">
-									<div className="w-9 h-9 bg-[#241678] rounded-lg flex items-center justify-center flex-shrink-0">
-										<Check className="w-4 h-4 text-[#09BACF]" />
+							{/* Guarantee card — uses cyan as background (accent), not navy */}
+							<div className="bg-[#09BACF] rounded-2xl p-6 relative overflow-hidden">
+								<div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-[40px] pointer-events-none" />
+								<div className="relative flex items-start gap-3">
+									<div className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0">
+										<Check className="w-4 h-4 text-white" />
 									</div>
 									<div>
 										<p className="font-black text-gray-950 text-sm mb-1">24-hour response guarantee</p>
@@ -552,7 +505,6 @@ const Contact = () => {
 			<section ref={faqRef} className="py-20 sm:py-28 bg-[#FAFAFA]">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-						{/* Left */}
 						<div>
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
@@ -580,7 +532,6 @@ const Contact = () => {
 								Still have something on your mind? Reach out and we'll answer within a few hours.
 							</motion.p>
 
-							{/* Animated dots decoration */}
 							<motion.div
 								initial={{ opacity: 0 }}
 								animate={faqInView ? { opacity: 1 } : {}}
@@ -598,7 +549,6 @@ const Contact = () => {
 							</motion.div>
 						</div>
 
-						{/* Right — Accordion */}
 						<div className="space-y-3">
 							{faqs.map((item, i) => (
 								<FAQItem key={i} question={item.q} answer={item.a} index={i} />

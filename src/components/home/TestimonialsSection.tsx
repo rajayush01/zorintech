@@ -107,7 +107,7 @@ const TestimonialsSection = () => {
 							animate={{ opacity: 1, x: 0 }}
 							exit={{ opacity: 0, x: dir * -80 }}
 							transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-							className="bg-[#241678] rounded-2xl p-8 sm:p-12 relative overflow-hidden"
+							className="bg-[#166178] rounded-2xl p-8 sm:p-12 relative overflow-hidden"
 						>
 							{/* Decorative quote mark */}
 							<div className="absolute top-6 right-8 text-[8rem] leading-none text-white/5 font-serif select-none pointer-events-none">

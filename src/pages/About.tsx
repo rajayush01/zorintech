@@ -56,7 +56,6 @@ const About = () => {
 		<>
 			{/* ── Hero ─────────────────────────────────────────────── */}
 			<section ref={heroRef} className="relative bg-white pt-32 pb-28 sm:pt-44 sm:pb-36 overflow-hidden">
-				{/* Grid */}
 				<div
 					className="absolute inset-0 opacity-[0.035] pointer-events-none"
 					style={{
@@ -64,8 +63,9 @@ const About = () => {
 						backgroundSize: '56px 56px',
 					}}
 				/>
+				<div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#09BACF]/6 rounded-full blur-[120px] pointer-events-none" />
+				<div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#241678]/4 rounded-full blur-[100px] pointer-events-none" />
 
-				{/* Parallax amber glow */}
 				<motion.div style={{ y: heroY }} className="absolute top-1/2 right-1/4 -translate-y-1/2 pointer-events-none">
 					<motion.div
 						animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.2, 0.08] }}
@@ -114,7 +114,6 @@ const About = () => {
 						ZorinTech is an international technology partner building world-class digital products for ambitious businesses across every industry.
 					</motion.p>
 
-					{/* Stats row */}
 					<motion.div
 						initial={{ opacity: 0, y: 24 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -145,7 +144,6 @@ const About = () => {
 			<section ref={missionRef} className="py-24 sm:py-32 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-						{/* Left */}
 						<div>
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
@@ -192,18 +190,16 @@ const About = () => {
 							</motion.p>
 						</div>
 
-						{/* Right — Global reach chart */}
+						{/* Right — Global reach — light card with cyan accents */}
 						<motion.div
 							initial={{ opacity: 0, x: 50 }}
 							animate={missionInView ? { opacity: 1, x: 0 } : {}}
 							transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
 						>
-							<div className="bg-gray-950 rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-								<motion.div
-									animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.22, 0.08] }}
-									transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-									className="absolute top-0 right-0 w-64 h-64 bg-[#09BACF] rounded-full blur-[90px] pointer-events-none"
-								/>
+							<div className="bg-[#FAFAFA] border border-gray-100 rounded-2xl p-8 sm:p-10 relative overflow-hidden">
+								{/* Top accent */}
+								<div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#09BACF] to-[#34cee0]" />
+								<div className="absolute top-0 right-0 w-64 h-64 bg-[#09BACF]/8 rounded-full blur-[90px] pointer-events-none" />
 								<div className="relative z-10">
 									<p className="text-[#09BACF] text-[10px] font-bold uppercase tracking-[0.25em] mb-7">Global Reach</p>
 									<div className="space-y-5">
@@ -215,10 +211,10 @@ const About = () => {
 												transition={{ delay: 0.4 + i * 0.08 }}
 											>
 												<div className="flex justify-between mb-2">
-													<span className="text-white/80 text-xs">{r.region}</span>
+													<span className="text-gray-500 text-xs">{r.region}</span>
 													<span className="text-[#09BACF] text-xs font-black">{r.projects}</span>
 												</div>
-												<div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+												<div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
 													<motion.div
 														initial={{ width: 0 }}
 														animate={missionInView ? { width: r.pct } : {}}
@@ -280,21 +276,19 @@ const About = () => {
 									initial={{ opacity: 0, y: 40 }}
 									animate={valuesInView ? { opacity: 1, y: 0 } : {}}
 									transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-									className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#9fe9f2] hover:shadow-xl hover:shadow-[#e8f9fb]/80 transition-all duration-400 cursor-default"
+									className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#9fe9f2] hover:shadow-xl hover:shadow-[#e8f9fb]/80 transition-all duration-400 cursor-default overflow-hidden relative"
 								>
+									<motion.div
+										initial={{ scaleX: 0 }}
+										whileHover={{ scaleX: 1 }}
+										transition={{ duration: 0.3 }}
+										className="absolute top-0 left-0 right-0 h-[2px] bg-[#09BACF] origin-left"
+									/>
 									<div className="w-11 h-11 bg-gray-50 group-hover:bg-[#09BACF] rounded-xl flex items-center justify-center text-gray-400 group-hover:text-gray-950 mb-5 transition-all duration-300">
 										<Icon className="w-5 h-5" />
 									</div>
 									<h4 className="font-black text-gray-950 mb-2 text-sm">{v.title}</h4>
 									<p className="text-gray-400 text-xs leading-relaxed">{v.desc}</p>
-
-									{/* Animated bottom accent on hover */}
-									<motion.div
-										initial={{ scaleX: 0 }}
-										whileHover={{ scaleX: 1 }}
-										transition={{ duration: 0.3 }}
-										className="h-px bg-[#09BACF] mt-5 origin-left"
-									/>
 								</motion.div>
 							);
 						})}
@@ -303,7 +297,7 @@ const About = () => {
 			</section>
 
 			{/* ── Timeline ──────────────────────────────────────────── */}
-			<section ref={timelineRef} className="py-24 sm:py-32 bg-[#f8f9ff] overflow-hidden">
+			<section ref={timelineRef} className="py-24 sm:py-32 bg-white overflow-hidden">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
@@ -326,13 +320,12 @@ const About = () => {
 					</div>
 
 					<div className="relative">
-						{/* Animated vertical line */}
 						<div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-px overflow-hidden">
 							<motion.div
 								initial={{ scaleY: 0 }}
 								animate={timelineInView ? { scaleY: 1 } : {}}
 								transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-								className="w-full h-full bg-gradient-to-b from-[#09BACF] via-[#624CB2]/40 to-transparent origin-top"
+								className="w-full h-full bg-gradient-to-b from-[#09BACF] via-[#09BACF]/40 to-transparent origin-top"
 							/>
 						</div>
 
@@ -347,13 +340,18 @@ const About = () => {
 										i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
 									}`}
 								>
-									{/* Content card */}
 									<div className={`sm:w-[calc(50%-2.5rem)] ${i % 2 === 0 ? 'sm:pr-14 sm:text-right' : 'sm:pl-14'}`}>
 										<motion.div
 											whileHover={{ scale: 1.02 }}
 											transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-											className="bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#09BACF]/30 transition-colors duration-400 cursor-default shadow-sm"
+											className="group bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#9fe9f2] hover:shadow-xl hover:shadow-[#e8f9fb]/80 transition-all duration-400 cursor-default overflow-hidden relative"
 										>
+											<motion.div
+												initial={{ scaleX: 0 }}
+												whileHover={{ scaleX: 1 }}
+												transition={{ duration: 0.3 }}
+												className={`absolute top-0 left-0 right-0 h-[2px] bg-[#09BACF] ${i % 2 === 0 ? 'origin-right' : 'origin-left'}`}
+											/>
 											<span className="font-display font-black text-3xl text-[#09BACF] block mb-2 tabular-nums">
 												{m.year}
 											</span>
@@ -361,12 +359,11 @@ const About = () => {
 										</motion.div>
 									</div>
 
-									{/* Dot */}
 									<motion.div
 										initial={{ scale: 0 }}
 										animate={timelineInView ? { scale: 1 } : {}}
 										transition={{ type: 'spring', stiffness: 260, damping: 18, delay: i * 0.12 + 0.5 }}
-										className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-[#09BACF] rounded-full border-4 border-white z-10"
+										className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-[#09BACF] rounded-full border-4 border-white z-10 shadow-lg shadow-[#09BACF]/30"
 									/>
 								</motion.div>
 							))}
@@ -376,7 +373,7 @@ const About = () => {
 			</section>
 
 			{/* ── Team ──────────────────────────────────────────────── */}
-			<section ref={teamRef} className="py-24 sm:py-32 bg-white">
+			<section ref={teamRef} className="py-24 sm:py-32 bg-[#FAFAFA]">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
 						<div>
@@ -419,7 +416,6 @@ const About = () => {
 								transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
 								className="group bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#9fe9f2] hover:shadow-xl hover:shadow-[#e8f9fb]/80 transition-all duration-400 cursor-default overflow-hidden relative"
 							>
-								{/* Hover accent line */}
 								<motion.div
 									initial={{ scaleX: 0 }}
 									whileHover={{ scaleX: 1 }}
@@ -431,7 +427,7 @@ const About = () => {
 									<motion.div
 										whileHover={{ rotate: [0, -6, 6, 0] }}
 										transition={{ duration: 0.4 }}
-										className="w-14 h-14 bg-gray-950 group-hover:bg-[#09BACF] rounded-xl flex items-center justify-center text-white group-hover:text-white font-black text-xl transition-all duration-300 flex-shrink-0"
+										className="w-14 h-14 bg-gray-100 group-hover:bg-[#09BACF] rounded-xl flex items-center justify-center text-gray-400 group-hover:text-gray-950 font-black text-xl transition-all duration-300 flex-shrink-0"
 									>
 										{member.initial}
 									</motion.div>
@@ -456,22 +452,20 @@ const About = () => {
 			{/* ── CTA ───────────────────────────────────────────────── */}
 			<section ref={ctaRef} className="py-16 sm:py-24 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<motion.div
-						initial={{ opacity: 0, y: 50 }}
-						animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-						className="relative bg-[#241678] rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden text-center"
-					>
-						<motion.div
-							animate={{ scale: [1, 1.35, 1], opacity: [0.14, 0.28, 0.14] }}
-							transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-							className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-[#09BACF] rounded-full blur-[100px] pointer-events-none"
-						/>
+					<div className="relative bg-white border border-gray-100 rounded-3xl p-8 sm:p-14 lg:p-20 overflow-hidden shadow-sm text-center">
+						{/* Top cyan stripe */}
+						<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#09BACF] via-[#34cee0] to-transparent" />
+
+						{/* Blobs */}
+						<div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-96 h-96 bg-[#09BACF]/8 rounded-full blur-[100px] pointer-events-none" />
+						<div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#241678]/4 rounded-full blur-[80px] pointer-events-none" />
+
+						{/* Dot grid */}
 						<div
 							className="absolute inset-0 opacity-[0.025] pointer-events-none"
 							style={{
-								backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
-								backgroundSize: '48px 48px',
+								backgroundImage: 'radial-gradient(circle, #09BACF 1px, transparent 1px)',
+								backgroundSize: '32px 32px',
 							}}
 						/>
 
@@ -479,8 +473,8 @@ const About = () => {
 							<motion.div
 								initial={{ opacity: 0, scale: 0.85 }}
 								animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
-								transition={{ delay: 0.15 }}
-								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#09BACF]/30 rounded-full mb-8"
+								transition={{ delay: 0.1 }}
+								className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#09BACF]/30 bg-[#e8f9fb] rounded-full mb-8"
 							>
 								<span className="w-1.5 h-1.5 bg-[#09BACF] rounded-full animate-pulse" />
 								<span className="text-[#09BACF] text-xs font-semibold uppercase tracking-[0.18em]">Join Our Journey</span>
@@ -489,13 +483,22 @@ const About = () => {
 							<motion.h2
 								initial={{ opacity: 0, y: 30 }}
 								animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-								transition={{ delay: 0.22 }}
-								className="font-display text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight mb-8"
+								transition={{ delay: 0.2 }}
+								className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 leading-[0.95] tracking-tight mb-4"
 							>
 								Let's build something
 								<br />
 								<span className="text-[#09BACF]">remarkable together.</span>
 							</motion.h2>
+
+							<motion.p
+								initial={{ opacity: 0, y: 20 }}
+								animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+								transition={{ delay: 0.28 }}
+								className="text-gray-400 text-base sm:text-lg max-w-lg mx-auto mb-10"
+							>
+								Ready to start your next project? We're here to help you build something you're proud of.
+							</motion.p>
 
 							<motion.div
 								initial={{ opacity: 0, y: 20 }}
@@ -505,20 +508,20 @@ const About = () => {
 							>
 								<Link
 									to="/contact"
-									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-white font-bold rounded-full hover:bg-[#34cee0] hover:scale-105 hover:shadow-2xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
+									className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#09BACF] text-gray-950 font-bold rounded-full hover:bg-[#34cee0] hover:scale-105 hover:shadow-xl hover:shadow-[#09BACF]/25 transition-all duration-300 text-sm"
 								>
 									Start a Project
 									<ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
 								</Link>
 								<Link
 									to="/work"
-									className="inline-flex items-center justify-center px-8 py-4 border border-white/10 text-white font-medium rounded-full hover:border-white/30 transition-all duration-300 text-sm"
+									className="inline-flex items-center justify-center px-8 py-4 border border-gray-200 text-gray-600 font-medium rounded-full hover:border-gray-400 hover:text-gray-950 transition-all duration-300 text-sm"
 								>
 									See Our Work
 								</Link>
 							</motion.div>
 						</div>
-					</motion.div>
+					</div>
 				</div>
 			</section>
 		</>
