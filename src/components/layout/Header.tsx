@@ -42,16 +42,9 @@ const Header = () => {
 					scrolled ? 'bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-sm' : 'bg-transparent'
 				}`}
 			>
-				{/* Amber progress line on scroll */}
-				<motion.div
-					className="absolute bottom-0 left-0 h-[2px] bg-amber-400"
-					style={{ width: scrolled ? '100%' : '0%' }}
-					animate={{ width: scrolled ? '100%' : '0%' }}
-					transition={{ duration: 0.6, ease: 'easeOut' }}
-				/>
 
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex items-center justify-between h-16 sm:h-20 xl:h-28">
+					<div className="flex items-center justify-between h-16 sm:h-20 xl:h-24">
 						{/* Logo */}
 						<Link to="/" className="flex items-center gap-2.5 flex-shrink-0 group">
 							<img src={logo} alt="logo" className='h-16 xl:h-20'/>
@@ -63,7 +56,7 @@ const Header = () => {
 								<Link
 									key={link.name}
 									to={link.path}
-									className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-full ${
+									className={`relative px-4 py-2 text-lg font-medium transition-colors duration-200 rounded-full ${
 										location.pathname === link.path
 											? 'text-gray-950 bg-gray-100'
 											: 'text-gray-900 hover:text-gray-950 hover:bg-gray-50'
