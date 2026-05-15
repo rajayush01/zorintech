@@ -4,70 +4,75 @@ import { Globe, Smartphone, Cloud, Palette, BarChart3, Cpu, ArrowUpRight, Check 
 
 const services = [
 	{
-		icon: Globe,
+		icon: BarChart3,
 		number: '01',
-		title: 'Web Development',
-		tagline: 'Fast. Scalable. Beautiful.',
-		desc: 'We build high-performance web applications using modern frameworks — optimized for speed, SEO, and global scale. From marketing sites to complex SaaS platforms.',
-		tags: ['React', 'Next.js', 'Node.js', 'TypeScript', 'GraphQL'],
-		metric: '3×',
-		metricLabel: 'faster load time',
-		features: ['Custom architecture', 'SEO-first approach', 'Performance budgets', 'Accessibility built-in'],
+		title: 'ERP Solutions',
+		tagline: 'Streamline every operation.',
+		desc: 'End-to-end ERP systems designed for schools, colleges, hospitals, and organizations to simplify operations, manage data, and improve efficiency through a centralized platform.',
+		tags: ['School / College ERP', 'Billing & Invoicing', 'Attendance & Fees', 'Reports & Analytics'],
+		metric: '40%',
+		metricLabel: 'cost reduction',
+		features: ['Centralized management', 'Role-based access', 'Real-time reporting', 'Workflow automation'],
 	},
+
 	{
-		icon: Smartphone,
+		icon: Globe,
 		number: '02',
-		title: 'Mobile Applications',
-		tagline: 'iOS & Android. One codebase.',
-		desc: 'Native and cross-platform mobile apps that deliver seamless user experiences. We ship apps that users love — with 4.9★ average ratings across the App Store and Play Store.',
-		tags: ['Flutter', 'React Native', 'Swift', 'Kotlin'],
-		metric: '4.9★',
-		metricLabel: 'avg. app rating',
-		features: ['Cross-platform efficiency', 'Native performance', 'Offline-first design', 'Push notifications'],
+		title: 'Custom Website Design, Development & Maintenance',
+		tagline: 'Fast. Scalable. Professional.',
+		desc: 'We design and develop high-performance websites focused on speed, responsiveness, SEO, and conversions — with ongoing maintenance to ensure long-term reliability.',
+		tags: ['UI/UX Design', 'Custom Development', 'Performance Optimization', 'Ongoing Maintenance'],
+		metric: '3×',
+		metricLabel: 'faster load times',
+		features: ['SEO-first approach', 'Responsive design', 'Performance optimization', 'Long-term maintenance'],
 	},
+
 	{
 		icon: Cloud,
 		number: '03',
-		title: 'Cloud & DevOps',
-		tagline: '99.9% uptime. Zero compromise.',
-		desc: 'Scalable cloud infrastructure, CI/CD pipelines, and DevOps practices for reliable, fast deployments. We architect systems that grow with your business.',
-		tags: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'],
+		title: 'E-Commerce Solutions',
+		tagline: 'Sell smarter. Scale faster.',
+		desc: 'Custom e-commerce platforms with secure payments, inventory tracking, order management, and scalable backend systems designed for business growth.',
+		tags: ['Custom Storefronts', 'Payment Gateway Integration', 'Inventory & Order Management', 'Admin Dashboard'],
 		metric: '99.9%',
 		metricLabel: 'uptime SLA',
-		features: ['Auto-scaling infra', 'Zero-downtime deploys', 'Cost optimization', '24/7 monitoring'],
+		features: ['Secure payment systems', 'Inventory management', 'Scalable infrastructure', 'Admin dashboards'],
 	},
+
+	{
+		icon: Smartphone,
+		number: '04',
+		title: 'Mobile Applications',
+		tagline: 'iOS & Android. Seamlessly connected.',
+		desc: 'Secure and scalable mobile applications tailored to business needs, delivering smooth experiences across Android, iOS, and integrated enterprise systems.',
+		tags: ['Android & iOS Apps', 'Web Applications', 'Role-based Access', 'API & System Integration'],
+		metric: '4.9★',
+		metricLabel: 'avg. store rating',
+		features: ['Cross-platform apps', 'Native performance', 'API integrations', 'Secure architecture'],
+	},
+
 	{
 		icon: Palette,
-		number: '04',
-		title: 'UI/UX Design',
-		tagline: 'Design that converts.',
-		desc: 'Research-driven design systems and interfaces that convert visitors into loyal customers. Every pixel is intentional, every interaction is crafted.',
-		tags: ['Figma', 'Design Systems', 'Prototyping', 'User Research'],
+		number: '05',
+		title: 'Business Web Applications & Dashboards',
+		tagline: 'Manage smarter. Grow faster.',
+		desc: 'We build secure and scalable business web applications, admin dashboards, and portals to efficiently manage users, workflows, operations, and analytics.',
+		tags: ['Admin Panels', 'Role-based Access', 'API Integration', 'Secure Architecture'],
 		metric: '+62%',
 		metricLabel: 'conversion lift',
-		features: ['User research', 'Design systems', 'Interactive prototypes', 'Usability testing'],
+		features: ['Admin dashboards', 'Real-time analytics', 'Role-based permissions', 'Secure system design'],
 	},
-	{
-		icon: BarChart3,
-		number: '05',
-		title: 'ERP & Business Systems',
-		tagline: 'Streamline every operation.',
-		desc: 'End-to-end enterprise resource planning systems tailored to your business workflows. We replace spreadsheet chaos with intelligent, integrated platforms.',
-		tags: ['Custom ERP', 'CRM', 'Analytics', 'Dashboards', 'Integrations'],
-		metric: '40%',
-		metricLabel: 'cost reduction',
-		features: ['Custom workflows', 'Real-time analytics', 'Role-based access', 'API integrations'],
-	},
+
 	{
 		icon: Cpu,
 		number: '06',
-		title: 'AI & Automation',
-		tagline: 'Work smarter, not harder.',
-		desc: 'Intelligent automation, machine learning integrations, and AI-powered features that give you a competitive edge. We make AI practical and impactful.',
-		tags: ['Python', 'TensorFlow', 'OpenAI', 'LangChain', 'Automation'],
+		title: 'Custom Software Development',
+		tagline: 'Built for your business.',
+		desc: 'Tailor-made software solutions that automate business processes, reduce manual effort, and solve unique operational challenges with scalable systems.',
+		tags: ['Automation Tools', 'Internal Systems', 'Custom Portals', 'Scalable Architecture'],
 		metric: '10×',
 		metricLabel: 'productivity gain',
-		features: ['LLM integrations', 'Workflow automation', 'Predictive analytics', 'Custom AI models'],
+		features: ['Process automation', 'Custom workflows', 'Scalable solutions', 'Business-focused architecture'],
 	},
 ];
 
@@ -117,7 +122,9 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 					>
 						<Icon className="w-5 h-5 text-[#09BACF]" />
 					</motion.div>
-					<span className={`font-black text-5xl leading-none transition-colors duration-300 ${hovered ? 'text-[#09BACF]/15' : 'text-gray-50'}`}>
+					<span
+						className={`font-black text-5xl leading-none transition-colors duration-300 ${hovered ? 'text-[#09BACF]/15' : 'text-gray-50'}`}
+					>
 						{service.number}
 					</span>
 				</div>
@@ -128,7 +135,9 @@ const ServiceCard = ({ service, index, inView }: { service: (typeof services)[0]
 				</p>
 
 				{/* Title */}
-				<h3 className={`font-display font-black text-xl mb-3 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-gray-950'}`}>
+				<h3
+					className={`font-display font-black text-xl mb-3 transition-colors duration-300 ${hovered ? 'text-[#09BACF]' : 'text-gray-950'}`}
+				>
 					{service.title}
 				</h3>
 
@@ -384,15 +393,12 @@ const Services = () => {
 								<h3 className="font-display font-black text-xl text-gray-950 mb-2 group-hover:text-[#09BACF] transition-colors duration-300">
 									{item.label}
 								</h3>
-								<p className="text-gray-400 text-sm leading-relaxed">
-									{item.desc}
-								</p>
+								<p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
-
 		</>
 	);
 };

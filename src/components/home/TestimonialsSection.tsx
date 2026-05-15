@@ -4,36 +4,52 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
 	{
-		quote: "ZorinTech transformed our entire digital infrastructure. The team's technical depth and attention to detail is unmatched. Our platform now handles 10× the traffic with zero downtime.",
-		name: 'Sarah Mitchell',
-		role: 'CTO',
-		company: 'FinTrack Global',
-		country: 'United States',
-		result: '10× traffic',
+		quote: 'ZorinTech created a professional and patient-friendly website that perfectly reflects my medical practice. Their attention to detail, clean design, and seamless functionality helped us significantly improve patient engagement and appointment inquiries.',
+		name: 'Dr. Vikas Bhalekar',
+		role: 'MBBS, MD Radiation Oncology',
+		company: 'Dr. Vikas Bhalekar Clinic',
+		country: 'India',
+		result: '2× inquiries',
 	},
 	{
-		quote: 'Working with ZorinTech felt like having a world-class engineering team in-house. They delivered our mobile app 2 weeks ahead of schedule and the quality exceeded every expectation.',
-		name: 'Luca Bianchi',
+		quote: 'Working with ZorinTech was an exceptional experience. Their team delivered the LetsTaxify website ahead of schedule with a modern, intuitive design that exceeded our expectations. Their professionalism and creative execution made the entire process seamless.',
+		name: 'CA Aastha Bansal',
 		role: 'Founder',
-		company: 'MobiCommerce',
-		country: 'Italy',
-		result: '2 wks early',
+		company: 'LetsTaxify',
+		country: 'India',
+		result: 'Ahead of deadline',
 	},
 	{
-		quote: 'The ERP system ZorinTech built for us reduced our operational costs by 40%. Their understanding of complex business workflows is exceptional.',
-		name: 'Aisha Al-Rashid',
-		role: 'Operations Director',
-		company: 'MediCore',
-		country: 'UAE',
-		result: '−40% costs',
+		quote: 'ZorinTech transformed our online presence with a modern and responsive website that perfectly showcases our construction projects and services. Since launch, we’ve experienced a noticeable increase in client inquiries and stronger digital credibility.',
+		name: 'Tarunesh Bhargava',
+		role: 'Owner',
+		company: 'Sunita Infrastructure',
+		country: 'India',
+		result: 'More inquiries',
 	},
 	{
-		quote: 'From design to deployment, ZorinTech was a true partner. The website they built for us has driven a 3× increase in qualified leads since launch.',
-		name: 'James Okonkwo',
-		role: 'CEO',
-		company: 'LogiFlow Africa',
-		country: 'Nigeria',
-		result: '3× leads',
+		quote: 'The ZorinTech team delivered an elegant and user-friendly website that truly represents our brand identity. Their creativity, professionalism, and timely delivery made the entire experience smooth and highly satisfying.',
+		name: 'Umakant',
+		role: 'Owner',
+		company: "Bharat O'Nesty Foods Pvt. Ltd.",
+		country: 'India',
+		result: 'Elegant brand presence',
+	},
+	{
+		quote: 'ZorinTech designed a visually appealing and easy-to-manage website that perfectly showcases our technology services and achievements. The intuitive admin panel and polished design have received great feedback from our clients.',
+		name: 'IB Technologies',
+		role: 'Technology Solutions Provider',
+		company: 'IB Technologies',
+		country: 'India',
+		result: 'Positive client feedback',
+	},
+	{
+		quote: 'We’re extremely pleased with the outstanding website created by ZorinTech. The design beautifully reflects our brand essence, and the team’s attention to detail, creativity, and on-time delivery exceeded expectations.',
+		name: "Team Bharat O'Nesty",
+		role: 'Team',
+		company: "Bharat O'Nesty Foods Pvt. Ltd.",
+		country: 'India',
+		result: 'Highly satisfied',
 	},
 ];
 
@@ -43,12 +59,21 @@ const TestimonialsSection = () => {
 	const [current, setCurrent] = useState(0);
 	const [dir, setDir] = useState(1);
 
-	const prev = () => { setDir(-1); setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length); };
-	const next = () => { setDir(1); setCurrent((c) => (c + 1) % testimonials.length); };
+	const prev = () => {
+		setDir(-1);
+		setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+	};
+	const next = () => {
+		setDir(1);
+		setCurrent((c) => (c + 1) % testimonials.length);
+	};
 
 	// Auto-advance
 	useEffect(() => {
-		const id = setInterval(() => { setDir(1); setCurrent((c) => (c + 1) % testimonials.length); }, 5000);
+		const id = setInterval(() => {
+			setDir(1);
+			setCurrent((c) => (c + 1) % testimonials.length);
+		}, 5000);
 		return () => clearInterval(id);
 	}, []);
 
@@ -129,7 +154,9 @@ const TestimonialsSection = () => {
 								</div>
 								<div>
 									<p className="text-white font-semibold text-sm">{t.name}</p>
-									<p className="text-gray-500 text-xs">{t.role}, {t.company} · {t.country}</p>
+									<p className="text-gray-500 text-xs">
+										{t.role}, {t.company} · {t.country}
+									</p>
 								</div>
 							</div>
 						</motion.div>
@@ -143,7 +170,10 @@ const TestimonialsSection = () => {
 								initial={{ opacity: 0, x: 20 }}
 								animate={inView ? { opacity: 1, x: 0 } : {}}
 								transition={{ delay: i * 0.07 + 0.3 }}
-								onClick={() => { setDir(i > current ? 1 : -1); setCurrent(i); }}
+								onClick={() => {
+									setDir(i > current ? 1 : -1);
+									setCurrent(i);
+								}}
 								className={`text-left p-4 rounded-xl border transition-all duration-300 ${
 									i === current
 										? 'border-[#34cee0] bg-[#e8f9fb]'
@@ -151,15 +181,23 @@ const TestimonialsSection = () => {
 								}`}
 							>
 								<div className="flex items-center gap-3">
-									<div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0 ${i === current ? 'bg-[#09BACF] text-gray-950' : 'bg-gray-100 text-gray-400'}`}>
+									<div
+										className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0 ${i === current ? 'bg-[#09BACF] text-gray-950' : 'bg-gray-100 text-gray-400'}`}
+									>
 										{item.name[0]}
 									</div>
 									<div className="min-w-0">
-										<p className={`font-semibold text-xs truncate ${i === current ? 'text-gray-950' : 'text-gray-500'}`}>{item.name}</p>
+										<p
+											className={`font-semibold text-xs truncate ${i === current ? 'text-gray-950' : 'text-gray-500'}`}
+										>
+											{item.name}
+										</p>
 										<p className="text-gray-400 text-[10px] truncate">{item.company}</p>
 									</div>
 									{i === current && (
-										<span className="ml-auto text-[#09BACF] text-[10px] font-bold uppercase tracking-widest flex-shrink-0">Active</span>
+										<span className="ml-auto text-[#09BACF] text-[10px] font-bold uppercase tracking-widest flex-shrink-0">
+											Active
+										</span>
 									)}
 								</div>
 							</motion.button>
@@ -172,7 +210,10 @@ const TestimonialsSection = () => {
 					{testimonials.map((_, i) => (
 						<button
 							key={i}
-							onClick={() => { setDir(i > current ? 1 : -1); setCurrent(i); }}
+							onClick={() => {
+								setDir(i > current ? 1 : -1);
+								setCurrent(i);
+							}}
 							className={`h-1 rounded-full transition-all duration-400 ${i === current ? 'w-8 bg-[#09BACF]' : 'w-3 bg-gray-200 hover:bg-gray-300'}`}
 						/>
 					))}

@@ -1,37 +1,94 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import {  Globe2, Zap, Shield, TrendingUp } from 'lucide-react';
+import { Globe2, Zap, Shield, TrendingUp } from 'lucide-react';
 
-const team = [
-	{ name: 'Alex Zorin', role: 'CEO & Co-Founder', country: 'United States', initial: 'A', specialty: 'Product Strategy' },
-	{ name: 'Priya Nair', role: 'CTO', country: 'India', initial: 'P', specialty: 'Systems Architecture' },
-	{ name: 'Marco Ricci', role: 'Head of Design', country: 'Italy', initial: 'M', specialty: 'UI/UX & Brand' },
-	{ name: 'Fatima Al-Hassan', role: 'Lead Engineer', country: 'UAE', initial: 'F', specialty: 'Full-Stack Dev' },
-	{ name: 'James Osei', role: 'DevOps Lead', country: 'Ghana', initial: 'J', specialty: 'Cloud & Infra' },
-	{ name: 'Yuki Tanaka', role: 'AI Engineer', country: 'Japan', initial: 'Y', specialty: 'ML & Automation' },
-];
+// const team = [
+// 	{
+// 		name: 'Alex Zorin',
+// 		role: 'CEO & Co-Founder',
+// 		country: 'United States',
+// 		initial: 'A',
+// 		specialty: 'Product Strategy',
+// 	},
+// 	{ name: 'Priya Nair', role: 'CTO', country: 'India', initial: 'P', specialty: 'Systems Architecture' },
+// 	{ name: 'Marco Ricci', role: 'Head of Design', country: 'Italy', initial: 'M', specialty: 'UI/UX & Brand' },
+// 	{ name: 'Fatima Al-Hassan', role: 'Lead Engineer', country: 'UAE', initial: 'F', specialty: 'Full-Stack Dev' },
+// 	{ name: 'James Osei', role: 'DevOps Lead', country: 'Ghana', initial: 'J', specialty: 'Cloud & Infra' },
+// 	{ name: 'Yuki Tanaka', role: 'AI Engineer', country: 'Japan', initial: 'Y', specialty: 'ML & Automation' },
+// ];
 
 const values = [
-	{ icon: Zap, title: 'Speed with Quality', desc: 'We move fast without breaking things. Agile sprints, weekly demos, and rigorous QA — always.' },
-	{ icon: Shield, title: 'Security First', desc: 'Every product we build is designed with enterprise-grade security from day one, not bolted on later.' },
-	{ icon: Globe2, title: 'Global Perspective', desc: 'With teams across 3 continents, we bring diverse thinking and round-the-clock execution to every project.' },
-	{ icon: TrendingUp, title: 'Outcome Obsessed', desc: 'We measure success by your KPIs, not our code commits. Business outcomes drive every decision we make.' },
+	{
+		icon: Zap,
+		title: 'Fast & Reliable Delivery',
+		desc: 'We focus on timely project delivery without compromising quality. Clear communication, rapid iterations, and reliable execution are part of every project.',
+	},
+	{
+		icon: Shield,
+		title: 'Trust & Transparency',
+		desc: 'From business websites to ERP systems, we build secure and dependable digital products with complete transparency throughout the process.',
+	},
+	{
+		icon: Globe2,
+		title: 'Client-Centric Approach',
+		desc: 'Every business is unique. We work closely with clients to understand their goals and deliver solutions tailored to their industry and workflows.',
+	},
+	{
+		icon: TrendingUp,
+		title: 'Growth-Focused Solutions',
+		desc: 'We measure success through business outcomes — better engagement, improved workflows, and digital experiences that drive growth.',
+	},
 ];
 
 const milestones = [
-	{ year: '2016', event: 'Founded in San Francisco with a team of 4 engineers.' },
-	{ year: '2018', event: 'Expanded to Europe. First enterprise client — a Fortune 500 logistics company.' },
-	{ year: '2020', event: 'Launched AI practice. Grew to 40+ engineers across 3 continents.' },
-	{ year: '2022', event: 'Crossed 100 projects delivered. Opened offices in Dubai and Lagos.' },
-	{ year: '2024', event: '150+ projects. 40+ countries. 98% client retention rate.' },
+	{
+		year: '2022',
+		event: 'ZorinTech was founded with a vision to help businesses establish a strong digital presence.',
+	},
+	{
+		year: '2023',
+		event: 'Successfully delivered websites for healthcare, taxation, temple, and business organizations.',
+	},
+	{
+		year: '2024',
+		event: 'Expanded into ERP systems, custom software solutions, and business automation platforms.',
+	},
+	{
+		year: '2025',
+		event: 'Delivered multiple industry-specific solutions including School ERP, College ERP, and invoicing systems.',
+	},
+	{
+		year: '2026',
+		event: 'Growing into a trusted digital solutions partner with clients across healthcare, education, finance, and enterprise sectors.',
+	},
 ];
 
 const regions = [
-	{ region: 'North America', projects: 48, pct: '90%' },
-	{ region: 'Europe', projects: 35, pct: '70%' },
-	{ region: 'Middle East & Africa', projects: 32, pct: '65%' },
-	{ region: 'Asia Pacific', projects: 22, pct: '45%' },
-	{ region: 'Latin America', projects: 13, pct: '28%' },
+	{
+		region: 'Healthcare',
+		projects: 12,
+		pct: '85%',
+	},
+	{
+		region: 'Education',
+		projects: 18,
+		pct: '90%',
+	},
+	{
+		region: 'Finance & Taxation',
+		projects: 10,
+		pct: '75%',
+	},
+	{
+		region: 'Business Websites',
+		projects: 28,
+		pct: '95%',
+	},
+	{
+		region: 'ERP & Software',
+		projects: 15,
+		pct: '80%',
+	},
 ];
 
 const About = () => {
@@ -63,7 +120,10 @@ const About = () => {
 				<div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#09BACF]/6 rounded-full blur-[120px] pointer-events-none" />
 				<div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#241678]/4 rounded-full blur-[100px] pointer-events-none" />
 
-				<motion.div style={{ y: heroY }} className="absolute top-1/2 right-1/4 -translate-y-1/2 pointer-events-none">
+				<motion.div
+					style={{ y: heroY }}
+					className="absolute top-1/2 right-1/4 -translate-y-1/2 pointer-events-none"
+				>
 					<motion.div
 						animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.2, 0.08] }}
 						transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
@@ -108,7 +168,8 @@ const About = () => {
 						transition={{ duration: 0.7, delay: 0.35 }}
 						className="text-gray-400 text-base sm:text-lg max-w-lg leading-relaxed mb-14"
 					>
-						ZorinTech is an international technology partner building world-class digital products for ambitious businesses across every industry.
+						ZorinTech is a trusted technology and digital solutions partner helping businesses build
+						impactful websites, ERP systems, and custom software tailored for growth.
 					</motion.p>
 
 					<motion.div
@@ -118,10 +179,10 @@ const About = () => {
 						className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-gray-100"
 					>
 						{[
-							{ v: '8+', l: 'Years' },
-							{ v: '150+', l: 'Projects' },
-							{ v: '40+', l: 'Countries' },
-							{ v: '98%', l: 'Retention' },
+							{ v: '50+', l: 'Projects' },
+							{ v: '20+', l: 'Industries' },
+							{ v: '99%', l: 'Client Satisfaction' },
+							{ v: '24/7', l: 'Support' },
 						].map((s, i) => (
 							<motion.div
 								key={s.l}
@@ -129,7 +190,9 @@ const About = () => {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.6 + i * 0.08 }}
 							>
-								<p className="font-display text-3xl sm:text-4xl font-black text-gray-950 tabular-nums">{s.v}</p>
+								<p className="font-display text-3xl sm:text-4xl font-black text-gray-950 tabular-nums">
+									{s.v}
+								</p>
 								<p className="text-gray-400 text-xs mt-1 tracking-[0.15em] uppercase">{s.l}</p>
 							</motion.div>
 						))}
@@ -175,7 +238,8 @@ const About = () => {
 								transition={{ delay: 0.25 }}
 								className="text-gray-400 leading-relaxed text-sm mb-5 max-w-md"
 							>
-								We founded ZorinTech with a single belief: great software should be accessible to every ambitious business, not just the ones with Silicon Valley budgets.
+								We founded ZorinTech with a simple belief: powerful digital solutions should be
+								accessible to businesses of every size — not just large enterprises.
 							</motion.p>
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
@@ -183,7 +247,9 @@ const About = () => {
 								transition={{ delay: 0.32 }}
 								className="text-gray-400 leading-relaxed text-sm max-w-md"
 							>
-								Today, we're a global team of engineers, designers, and strategists who partner with startups and enterprises alike — delivering products that scale, perform, and create real business value.
+								Today, we partner with startups, schools, healthcare professionals, enterprises, and
+								organizations to create scalable websites, ERP systems, and software that deliver
+								measurable business value.
 							</motion.p>
 						</div>
 
@@ -198,7 +264,9 @@ const About = () => {
 								<div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#09BACF] to-[#34cee0]" />
 								<div className="absolute top-0 right-0 w-64 h-64 bg-[#09BACF]/8 rounded-full blur-[90px] pointer-events-none" />
 								<div className="relative z-10">
-									<p className="text-[#09BACF] text-[10px] font-bold uppercase tracking-[0.25em] mb-7">Global Reach</p>
+									<p className="text-[#09BACF] text-[10px] font-bold uppercase tracking-[0.25em] mb-7">
+										Global Reach
+									</p>
 									<div className="space-y-5">
 										{regions.map((r, i) => (
 											<motion.div
@@ -209,13 +277,19 @@ const About = () => {
 											>
 												<div className="flex justify-between mb-2">
 													<span className="text-gray-500 text-xs">{r.region}</span>
-													<span className="text-[#09BACF] text-xs font-black">{r.projects}</span>
+													<span className="text-[#09BACF] text-xs font-black">
+														{r.projects}
+													</span>
 												</div>
 												<div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
 													<motion.div
 														initial={{ width: 0 }}
 														animate={missionInView ? { width: r.pct } : {}}
-														transition={{ duration: 1.1, delay: 0.5 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+														transition={{
+															duration: 1.1,
+															delay: 0.5 + i * 0.1,
+															ease: [0.22, 1, 0.36, 1],
+														}}
 														className="h-full bg-[#09BACF] rounded-full"
 													/>
 												</div>
@@ -337,7 +411,9 @@ const About = () => {
 										i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
 									}`}
 								>
-									<div className={`sm:w-[calc(50%-2.5rem)] ${i % 2 === 0 ? 'sm:pr-14 sm:text-right' : 'sm:pl-14'}`}>
+									<div
+										className={`sm:w-[calc(50%-2.5rem)] ${i % 2 === 0 ? 'sm:pr-14 sm:text-right' : 'sm:pl-14'}`}
+									>
 										<motion.div
 											whileHover={{ scale: 1.02 }}
 											transition={{ type: 'spring', stiffness: 300, damping: 25 }}
@@ -359,7 +435,12 @@ const About = () => {
 									<motion.div
 										initial={{ scale: 0 }}
 										animate={timelineInView ? { scale: 1 } : {}}
-										transition={{ type: 'spring', stiffness: 260, damping: 18, delay: i * 0.12 + 0.5 }}
+										transition={{
+											type: 'spring',
+											stiffness: 260,
+											damping: 18,
+											delay: i * 0.12 + 0.5,
+										}}
 										className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-[#09BACF] rounded-full border-4 border-white z-10 shadow-lg shadow-[#09BACF]/30"
 									/>
 								</motion.div>
@@ -370,7 +451,7 @@ const About = () => {
 			</section>
 
 			{/* ── Team ──────────────────────────────────────────────── */}
-			<section ref={teamRef} className="py-24 sm:py-32 bg-[#FAFAFA]">
+			{/* <section ref={teamRef} className="py-24 sm:py-32 bg-[#FAFAFA]">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
 						<div>
@@ -435,7 +516,9 @@ const About = () => {
 								</div>
 
 								<div className="flex items-center justify-between">
-									<span className="text-[10px] text-gray-400 uppercase tracking-widest">{member.country}</span>
+									<span className="text-[10px] text-gray-400 uppercase tracking-widest">
+										{member.country}
+									</span>
 									<span className="px-2.5 py-1 bg-[#e8f9fb] text-[#0a9db0] text-[10px] font-bold rounded-full border border-[#cdf3f8]">
 										{member.specialty}
 									</span>
@@ -444,7 +527,7 @@ const About = () => {
 						))}
 					</div>
 				</div>
-			</section>
+			</section> */}
 		</>
 	);
 };

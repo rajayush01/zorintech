@@ -6,12 +6,12 @@ const Footer = () => {
 	const year = new Date().getFullYear();
 
 	const services = [
-		{ label: 'Web Development', href: '#' },
-		{ label: 'Mobile Apps', href: '#' },
-		{ label: 'Cloud Solutions', href: '#' },
-		{ label: 'UI/UX Design', href: '#' },
-		{ label: 'ERP Systems', href: '#' },
-		{ label: 'AI Integration', href: '#' },
+		{ label: 'ERP Solutions', href: '#' },
+		{ label: 'Custom Website Design, Development & Maintenance', href: '#' },
+		{ label: 'E-Commerce Solutions', href: '#' },
+		{ label: 'Mobile Application Development', href: '#' },
+		{ label: 'Business Web Applications & Dashboards', href: '#' },
+		{ label: 'Custom Software Development', href: '#' },
 	];
 
 	const company = [

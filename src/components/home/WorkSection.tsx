@@ -1,101 +1,97 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import nymara from "../../assets/nymara.png"
+import stanford from "../../assets/schoologo-bg.png"
+import letstaxify from "../../assets/LogoTagline.png"
 
 const projects = [
   {
     number: "01",
     title: "Nymara",
     category: "E-Commerce Platform",
-    description: "React · Node.js · MongoDB",
     year: "2024",
-    src: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+    src: nymara,
     ctaText: "View Project",
-    ctaLink: "#",
+    ctaLink: "nymarajewels.com",
     tags: ["React", "Node.js", "MongoDB"],
     content: () => (
       <p>
-        A luxury lab-grown diamond e-commerce platform with seamless checkout,
-        product discovery, and a premium shopping experience. Built to handle
-        high-traffic product browsing with real-time inventory sync.
+        A modern e-commerce platform for a lab-grown diamond brand, 
+        designed to deliver a luxury shopping experience with seamless navigation, 
+        product discovery, and secure checkout.
         <br />
         <br />
-        The platform features an immersive 3D diamond viewer, AI-powered
-        recommendation engine, and a bespoke CMS for collection management —
-        all wrapped in an ultra-refined visual language that matches the luxury
+        The platform features an immersive 3D diamond like animations, and a bespoke CMS 
+        for collection management, all wrapped in an ultra-refined visual language that matches the luxury
         market.
       </p>
     ),
   },
   {
     number: "02",
-    title: "FinTrack Pro",
-    category: "FinTech Dashboard",
-    description: "Next.js · Python · AWS",
+    title: "Standford School",
+    category: "School Website",
     year: "2024",
-    src: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80",
+    src: stanford,
     ctaText: "View Project",
-    ctaLink: "#",
+    ctaLink: "http://stanfordujjain.com/",
     tags: ["Next.js", "Python", "AWS"],
     content: () => (
       <p>
-        Real-time financial analytics dashboard serving 50,000+ users across 12
-        countries with live data visualization. Handles millions of transactions
-        per day with sub-100ms query response times.
-        <br />
-        <br />
-        Features include multi-currency support, predictive cash flow modeling,
-        and role-based access across enterprise teams — all delivered through
-        a clean, data-dense interface designed for power users.
+       A prestigious and modern school website designed to showcase academic excellence, 
+      research innovation, admissions, and vibrant campus life with a clean and intuitive user experience.
+      <br />
+      <br />
+      Features include detailed program exploration, faculty and research highlights, 
+      admission guidance, campus resources, and responsive navigation — all delivered through 
+      a professional and visually engaging interface inspired by Stanford University's identity.
       </p>
     ),
   },
   {
     number: "03",
-    title: "MediCore ERP",
-    category: "Healthcare System",
-    description: "React · PostgreSQL · Docker",
+    title: "Lets Taxify",
+    category: "Custom Website",
     year: "2023",
-    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80",
+    src: letstaxify,
     ctaText: "View Project",
-    ctaLink: "#",
+    ctaLink: "https://letstaxify.com/",
     tags: ["React", "PostgreSQL", "Docker"],
     content: () => (
       <p>
-        End-to-end hospital management ERP handling patient records, billing,
-        inventory, and staff scheduling across a network of 14 clinics. Fully
-        HIPAA-compliant with role-based access control and audit logging.
+        A professional and reliable taxation website built for Let’s Taxify to simplify financial, taxation, and compliance services while building client trust.
         <br />
         <br />
-        Reduced administrative overhead by 40% and virtually eliminated
-        billing errors through smart validation workflows and integrated
-        insurance claim automation.
+        Features include service showcases for tax filing, GST, accounting, and financial consulting, 
+        easy client inquiry options, secure consultation booking, and a clean, user-friendly interface 
+        designed to deliver a seamless and trustworthy experience.
       </p>
     ),
   },
-  {
-    number: "04",
-    title: "LogiFlow",
-    category: "Logistics Platform",
-    description: "Flutter · Python · Kubernetes",
-    year: "2023",
-    src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80",
-    ctaText: "View Project",
-    ctaLink: "#",
-    tags: ["Flutter", "Python", "Kubernetes"],
-    content: () => (
-      <p>
-        AI-powered logistics optimization platform reducing delivery costs by
-        35% for a global supply chain company operating across 6 continents.
-        Routes are dynamically recalculated using live traffic, weather, and
-        capacity data.
-        <br />
-        <br />
-        The mobile-first driver app (Flutter) integrates directly with the
-        dispatch engine, enabling real-time re-routing and seamless proof-of-
-        delivery capture — all offline-capable.
-      </p>
-    ),
-  },
+  // {
+  //   number: "04",
+  //   title: "LogiFlow",
+  //   category: "Logistics Platform",
+  //   description: "Flutter · Python · Kubernetes",
+  //   year: "2023",
+  //   src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80",
+  //   ctaText: "View Project",
+  //   ctaLink: "#",
+  //   tags: ["Flutter", "Python", "Kubernetes"],
+  //   content: () => (
+  //     <p>
+  //       AI-powered logistics optimization platform reducing delivery costs by
+  //       35% for a global supply chain company operating across 6 continents.
+  //       Routes are dynamically recalculated using live traffic, weather, and
+  //       capacity data.
+  //       <br />
+  //       <br />
+  //       The mobile-first driver app (Flutter) integrates directly with the
+  //       dispatch engine, enabling real-time re-routing and seamless proof-of-
+  //       delivery capture — all offline-capable.
+  //     </p>
+  //   ),
+  // },
 ];
 
 export const CloseIcon = () => (
@@ -225,7 +221,7 @@ export function WorkSection() {
                   <img
                     src={active.src}
                     alt={active.title}
-                    className="w-full h-72 object-cover object-center"
+                    className="w-full h-72 object-contain object-center"
                   />
                 </motion.div>
 
@@ -266,7 +262,7 @@ export function WorkSection() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
+                  {/* <div className="flex flex-wrap gap-1.5 mb-4">
                     {active.tags.map((tag) => (
                       <span
                         key={tag}
@@ -278,7 +274,7 @@ export function WorkSection() {
                     <span className="px-2.5 py-1 bg-gray-100 text-gray-400 text-xs rounded-full font-mono">
                       {active.year}
                     </span>
-                  </div>
+                  </div> */}
 
                   {/* Description */}
                   <motion.div
@@ -319,7 +315,7 @@ export function WorkSection() {
                   <img
                     src={project.src}
                     alt={project.title}
-                    className="h-14 w-14 rounded-xl object-cover object-center flex-shrink-0"
+                    className="h-14 w-14 rounded-xl object-contain object-center flex-shrink-0"
                   />
                 </motion.div>
               </div>
@@ -340,11 +336,11 @@ export function WorkSection() {
                     {project.category}
                   </motion.span>
                 </div>
-                <p className="text-sm text-gray-400">{project.description}</p>
+                {/* <p className="text-sm text-gray-400">{project.description}</p> */}
               </div>
 
               {/* Tags */}
-              <div className="hidden lg:flex flex-wrap gap-1.5 w-44 flex-shrink-0">
+              {/* <div className="hidden lg:flex flex-wrap gap-1.5 w-44 flex-shrink-0">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
@@ -353,11 +349,11 @@ export function WorkSection() {
                     {tag}
                   </span>
                 ))}
-              </div>
+              </div> */}
 
               {/* Year + CTA button */}
               <div className="flex items-center gap-4 flex-shrink-0">
-                <span className="text-gray-300 text-sm font-mono hidden sm:block">{project.year}</span>
+                {/* <span className="text-gray-300 text-sm font-mono hidden sm:block">{project.year}</span> */}
                 <motion.button
                   layoutId={`button-${project.title}-${id}`}
                   className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-[#09BACF] hover:text-white text-gray-600 transition-colors duration-200"
